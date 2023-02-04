@@ -1,4 +1,5 @@
 import axios from "axios";
+import SearchBar from "./SearchBar";
 
 const MainComponent = () => {
   // const onEnter = () => {
@@ -37,7 +38,10 @@ const MainComponent = () => {
   // index 0 OR randomizer as each search has different
   // for google book api we need to get
   // index1, volumeInfo -> averageRating, volumeInfo ->description, volumeInfo -> imageLinks -> thumbnail, volumneInfo -> authors,
-  return <div></div>;
+  return (
+    <SearchBar />
+  )
+  ;
 };
 
 export default MainComponent;
