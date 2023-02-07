@@ -1,11 +1,13 @@
-const RatingsResults = () => {
+const RatingsResults = (props) => {
+    const bookTitle = props.bookTitle
     return (
         <>
             <section className="wrapper">
                 <div className="bookContainer">
                     <div className="bookInfo">
+                        <h2>{bookTitle}</h2>
                         <div className="bookImageContainer">
-                            <img className="bookImage" src={} alt={} />
+                            {/* <img className="bookImage" src={} alt={} /> */}
                         </div>
                         <div className="bookRating">
                             
@@ -25,7 +27,7 @@ const RatingsResults = () => {
                 <div className="movieContainer">
                     <div className="movieInfo">
                         <div className="movieImageContainer">
-                            <img className="movieImage" src={ } alt={ } />
+                            {/* <img className="movieImage" src={ } alt={ } /> */}
                         </div>
                         <div className="movieRating">
 
