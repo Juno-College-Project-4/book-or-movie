@@ -1,6 +1,6 @@
 // import { useState } from "react"; -- state not needed
 
-const SearchBar = ({handleClick, setBookTitle, bookTitle}) => {
+const SearchBar = ({handleClick, setSearchInput, searchInput}) => {
 
     // const [buttonClick, setButtonClick] = useState(""); --- State is not needed here as all the states were put into the MainContainer Component
     // const [userInput, setUserInput] = useState("");
@@ -12,15 +12,15 @@ const SearchBar = ({handleClick, setBookTitle, bookTitle}) => {
     // }
 
     const handleInput = (e) => {
-        setBookTitle(e.target.value);
+        setSearchInput(e.target.value);
         // setUserInput(e.target.value); -- not needed.. as the handle input is using the setBookTitle state from the MainContainer Component
-        console.log(userInput);
+        // console.log(userInput);
     }
     
     return (
         <div>
             <form action="">
-                <input type="text" value={bookTitle} placeholder="Search Movies/Books" onChange={handleInput}/>
+                <input type="text" value={searchInput} placeholder="Search Movies/Books" onChange={handleInput}/>
                 <button type="submit" value="Submit" className="button" onClick={handleClick}>Submit</button>
             </form>
         </div>

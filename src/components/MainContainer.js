@@ -10,21 +10,21 @@ import RatingsResults from './RatingsResult';
 const MainContainer = () => {
 
   //3. intiliaze state to hold the data - The information on the book will be returned from the api
-  const [bookTitle, setBookTitle] = useState(""); 
+  const [searchInput, setSearchInput] = useState(""); 
   const [bookDetails, setBookDetails] = useState([]);
   const [movieDetails, setMovieDetails] = useState([]);
 
   //4. define a side effect which will run once the user searches for a book or movie title
   const onEnter = () => {
-    console.log("this is run")
-    console.log(bookTitle);
+    // console.log("this is run")
+    // console.log(bookTitle);
     axios({
       url: "https://www.googleapis.com/books/v1/volumes",
       method:'GET',
       dataResponse: 'json',
       params: {
           API_KEY:"AIzaSyAUtAytZDfo4ohe1l2O29rUzdY7oypqRts",
-          q: bookTitle
+          q: searchInput
       }
     })
     .then((apiData) => {
@@ -36,14 +36,22 @@ const MainContainer = () => {
       const movie = apiData.data.items[1].volumeInfo
       // const filteredBookData = apiData.data.items[1].volumeInfo.filter(obj => obj.title === bookTitle) -- trying to have a strict filter based on user input
       // setBookTitle(filteredBookData);
-      console.log(movie)
+      // console.log(movie)
       setBookDetails(apiData.data.items[1].volumeInfo);
-      setBookTitle(apiData.data.items[1].volumeInfo.title);
-      console.log(setBookTitle);
+
+      // function goes here for bookDetails.title
+      // wrap the movie axios into a function here.
+
+      
+
+
+
+      
+      // console.log(setBookTitle);
       // console.log(filteredBookData);
     })
     .catch((error) => {
-        console.log(error)
+        console.log(error) 
     });
   
     axios({
@@ -52,16 +60,32 @@ const MainContainer = () => {
         api_key: "abb23cb27cf45e3859e3f8c484c9463a",
         include_adult: false,
         language: "en",
-        query: bookTitle
+        
+        query: searchInput
       },
     })
   
       .then((data) => {
-        console.log(data);
+         
         // filtered movie data based on user input 
-        const filteredMovieData = data.data.results.filter(movie => movie.original_title === bookTitle)
-        setMovieDetails(filteredMovieData);
-        console.log(filteredMovieData);
+        
+        const filteredMovieData = data.data.results.filter(movie => movie.original_title.toUpperCase() === searchInput.toUpperCase() )
+        const popular = filteredMovieData.map(popularMovie => console.log(popularMovie))
+        
+        
+        
+
+
+
+        const popularOrganized = (Math.max(...popular))
+        
+        const mostPopular = popular.indexOf(popularOrganized)
+        console.log(mostPopular, "most popular");
+
+        // console.log(searchInput);
+        // console.log(data.data.results)
+        setMovieDetails(filteredMovieData[mostPopular]);
+        console.log(movieDetails, "movie Details");
       })
   
       .catch((error) => {
@@ -89,8 +113,8 @@ const handleClick = (e) => {
   return (
     <section>
       {/*Parent component that will be used to pass down props */}
-    <SearchBar handleClick={handleClick} bookDetails={bookDetails} movieDetails={movieDetails} setBookTitle={setBookTitle} bookTitle={bookTitle}/>
-    <RatingsResults bookTitle={bookTitle}/>
+    <SearchBar handleClick={handleClick} bookDetails={bookDetails} movieDetails={movieDetails} setSearchInput={setSearchInput} searchInput={searchInput}/>
+    <RatingsResults searchInput={searchInput} />
     </section>
   )
   ;

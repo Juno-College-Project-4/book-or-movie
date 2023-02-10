@@ -1,11 +1,11 @@
 const RatingsResults = (props) => {
-    const bookTitle = props.bookTitle
+    const searchInput = props.searchInput
     return (
         <>
             <section className="wrapper">
                 <div className="bookContainer">
                     <div className="bookInfo">
-                        <h2>{bookTitle}</h2>
+                        <h2>{searchInput}</h2>
                         <div className="bookImageContainer">
                             {/* <img className="bookImage" src={} alt={} /> */}
                         </div>
