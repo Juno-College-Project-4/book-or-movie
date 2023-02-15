@@ -108,8 +108,8 @@ const MainContainer = () => {
   return (
     <section>
       {/*Parent component that will be used to pass down props */}
-      <SearchBar handleClick={handleClick} bookDetails={bookDetails} movieDetails={movieDetails} setSearchInput={setSearchInput} searchInput={searchInput}/>
-      <RatingsResults searchInput={searchInput} error={error}/>      
+    <SearchBar handleClick={handleClick} bookDetails={bookDetails} movieDetails={movieDetails} setSearchInput={setSearchInput} searchInput={searchInput}/>
+    <RatingsResults bookDetails={bookDetails} searchInput={searchInput} error={error}/>
     </section>
   )
   ;
