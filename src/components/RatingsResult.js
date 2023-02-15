@@ -7,7 +7,7 @@ const RatingsResults = (props) => {
                     <div className="bookInfo">
                         <h2>{searchInput}</h2>
                         <div className="bookImageContainer">
-                            {/* <img className="bookImage" src={} alt={} /> */}
+                            <img className="bookImage" src={props.bookDetails.imageLinks.thumbnail} alt={''} />
                         </div>
                         <div className="bookRating">
                             
