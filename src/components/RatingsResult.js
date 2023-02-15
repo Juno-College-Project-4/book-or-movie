@@ -15,7 +15,7 @@ const RatingsResults = (props) => {
                         </p>
                         <div className="bookImageContainer">
 
-                            <img className="bookImage" src={props.bookDetails.imageLinks.thumbnail} alt={''} />
+                            {/* <img className="bookImage" src={props.bookDetails.imageLinks.thumbnail} alt={''} /> */}
 
                         </div>
                         <div className="bookRating">
