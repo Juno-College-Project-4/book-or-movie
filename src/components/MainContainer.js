@@ -13,11 +13,10 @@ const MainContainer = () => {
   const [searchInput, setSearchInput] = useState(""); 
   const [bookDetails, setBookDetails] = useState([]);
   const [movieDetails, setMovieDetails] = useState([]);
+  const [error, setError] = useState(false);
 
-  
   //4. define a side effect which will run once the user searches for a book or movie title
   const onEnter = () => {
-    
     axios({
       url: "https://www.googleapis.com/books/v1/volumes",
       method:'GET',
@@ -27,7 +26,15 @@ const MainContainer = () => {
           q: searchInput
       }
     })
-    .then((apiData) => {
+    .then((apiData) => {       
+        if (apiData === apiData) {
+          return apiData
+        } else {
+          throw new Error (apiData.data.items === "")
+        }
+     })
+     .then((apiData) => {
+        // console.log(apiData)
   
       const bookInfo = apiData.data.items.map((book) => { return book.volumeInfo}
         ) ;
@@ -44,37 +51,45 @@ const MainContainer = () => {
     
       setBookDetails(bookInfo);
       console.log(setBookDetails)
-      // const bookToMovie = (bookTitle) => { 
-      //   console.log(bookTitle)          
-      //   return axios({
-      //       url: `https://api.themoviedb.org/3/search/movie`,
-      //       params: {
-      //         api_key: "abb23cb27cf45e3859e3f8c484c9463a",
-      //         include_adult: false,
-      //         language: "en",        
-      //         query: bookTitle
-      //     }
-      //   })        
-      // }      
+      const bookToMovie = (bookTitle) => { 
+        console.log(bookTitle)          
+        return axios({
+            url: `https://api.themoviedb.org/3/search/movie`,
+            params: {
+              api_key: "abb23cb27cf45e3859e3f8c484c9463a",
+              include_adult: false,
+              language: "en",        
+              query: bookTitle
+          }
+        })        
+      }      
       // function goes here for bookDetails.title
       // wrap the movie axios into a function here.
-        
-      // bookToMovie(bookName).then((data) => {               
-      //   // filtered movie data based on user input         
-      //   // const filteredMovieData = data.data.results.filter(movie => movie.original_title.toUpperCase() === bookName.toUpperCase())
-      //   // const popular = filteredMovieData.map(popularMovie => popularMovie.popularity)  
-      //   // const popularOrganized = (Math.max(...popular))        
-      //   // const mostPopular = popular.indexOf(popularOrganized)
-      //   // console.log(mostPopular, "most popular");
-       
-      //   // setMovieDetails(filteredMovieData[mostPopular]);
-      
-      // }) 
+      bookToMovie(bookName).then((data) => {               
+        // filtered movie data based on user input         
+        const filteredMovieData = data.data.results.filter(movie => movie.original_title.toUpperCase() === bookName.toUpperCase())
+        const popular = filteredMovieData.map(popularMovie => popularMovie.popularity)  
+        const popularOrganized = (Math.max(...popular))        
+        const mostPopular = popular.indexOf(popularOrganized)
+        console.log(mostPopular, "most popular");
+        setMovieDetails(filteredMovieData[mostPopular]);
+      }) 
     })      
     .catch((error) => {
-       alert("Invalid book title!")
+        
+      // state to represent error
+      // if error is true display message
+      // turnary in return section
+      // console.log(error.message)
+      if (error.message === "apiData.data.items is undefined") {
+        setError("This book or movie title doesn't exist");
+        setSearchInput("") 
+      } else {
+        setError(true)
+      }        
     });
   }
+  
   
   // index 0 OR randomizer as each search has different
   // for google book api we need to get
@@ -94,9 +109,8 @@ const MainContainer = () => {
   return (
     <section>
       {/*Parent component that will be used to pass down props */}
-      {/* <MainContainer bookDetails={bookDetails}/> */}
-      <SearchBar handleClick={handleClick} bookDetails={bookDetails} movieDetails={movieDetails} setSearchInput={setSearchInput} searchInput={searchInput}/>
-      <RatingsResults bookDetails={bookDetails} searchInput={searchInput} />
+    <SearchBar handleClick={handleClick} bookDetails={bookDetails} movieDetails={movieDetails} setSearchInput={setSearchInput} searchInput={searchInput}/>
+    <RatingsResults bookDetails={bookDetails} searchInput={searchInput} error={error}/>
     </section>
   )
   ;

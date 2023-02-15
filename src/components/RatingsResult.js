@@ -2,6 +2,7 @@ const RatingsResults = (props) => {
     const searchInput = props.searchInput
     const bookInfo = props.bookDetails
     console.log(bookInfo)
+    const error = props.error
     return (
         <>
             <section className="wrapper">
@@ -11,6 +12,12 @@ const RatingsResults = (props) => {
                         <div className="bookTitle">
                             {/* <h3>{bookTitle}</h3> */}
                         </div>
+                        <p>
+                            {
+                                error ? error : ""
+                            }
+                            {/* stretch goal: hide the paragraph vs. what's inside the paragraph */}
+                        </p>
                         <div className="bookImageContainer">
                             {bookInfo.map((bookImage) => {
                                 console.log(bookImage)
