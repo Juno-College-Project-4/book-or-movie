@@ -1,12 +1,20 @@
 const RatingsResults = (props) => {
     const searchInput = props.searchInput
+    const error = props.error
     return (
         <>
             <section className="wrapper">
                 <div className="bookContainer">
                     <div className="bookInfo">
                         <h2>{searchInput}</h2>
+                        <p>
+                            {
+                                error ? error : ""
+                            }
+                            {/* stretch goal: hide the paragraph vs. what's inside the paragraph */}
+                        </p>
                         <div className="bookImageContainer">
+
                             {/* <img className="bookImage" src={} alt={} /> */}
                         </div>
                         <div className="bookRating">

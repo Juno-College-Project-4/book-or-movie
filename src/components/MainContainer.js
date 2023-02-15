@@ -13,10 +13,10 @@ const MainContainer = () => {
   const [searchInput, setSearchInput] = useState(""); 
   const [bookDetails, setBookDetails] = useState([]);
   const [movieDetails, setMovieDetails] = useState([]);
-  
+  const [error, setError] = useState(false);
+
   //4. define a side effect which will run once the user searches for a book or movie title
   const onEnter = () => {
-    // console.log("this is run")
     axios({
       url: "https://www.googleapis.com/books/v1/volumes",
       method:'GET',
@@ -26,19 +26,33 @@ const MainContainer = () => {
           q: searchInput
       }
     })
-    .then((apiData) => {
-        // console.log(data.data.items[1].volumeInfo.imageLinks.thumbnail) -> FOR IMAGE
+    .then((apiData) => {       
+        if (apiData === apiData) {
+          return apiData
+        } else {
+          throw new Error (apiData.data.items === "")
+        }
+     })
+     .then((apiData) => {
+        // console.log(apiData)
+  
+        // trying to have a strict filter based on user input
+      // const filteredBookData = apiData.data.items[1].volumeInfo.filter(obj => obj.title === bookTitle) 
+      // setBookTitle(filteredBookData);
+   
+      // console.log(data.data.items[1].volumeInfo.imageLinks.thumbnail) -> FOR IMAGE
       // console.log(data.data.items[1].volumeInfo.description) -> FOR DESCRIPTION
       // console.log(data.data.items[1].volumeInfo.title) -> FOR TITLE
       // console.log(data.data.items[1].volumeInfo.authors) -> FOR AUTHORS
       // console.log(data.data.items[1].volumeInfo.averageRating) -> FOR AVERAGE RATING
+      // const bookName = apiData.data.items[1].volumeInfo.title
+      // // trying to have a strict filter based on user input
+      // // const filteredBookData = apiData.data.items[1].volumeInfo.filter(obj => obj.title === bookTitle) 
+      // // setBookTitle(filteredBookData);
+      // setBookDetails(apiData.data.items[1].volumeInfo.title);
       const bookName = apiData.data.items[1].volumeInfo.title
-      // trying to have a strict filter based on user input
-      // const filteredBookData = apiData.data.items[1].volumeInfo.filter(obj => obj.title === bookTitle) 
-      // setBookTitle(filteredBookData);
-      // console.log(movie)
-      setBookDetails(apiData.data.items[1].volumeInfo.title);
-      const bookToMovie = (bookTitle) => { 
+      setBookDetails(apiData.data.items[1].volumeInfo.title)
+      const bookToMovie = (bookTitle) => {         
         console.log(bookTitle)          
         return axios({
             url: `https://api.themoviedb.org/3/search/movie`,
@@ -52,8 +66,6 @@ const MainContainer = () => {
       }      
       // function goes here for bookDetails.title
       // wrap the movie axios into a function here.
-      // console.log(setBookTitle);
-      // console.log(filteredBookData);   
       bookToMovie(bookName).then((data) => {               
         // filtered movie data based on user input         
         const filteredMovieData = data.data.results.filter(movie => movie.original_title.toUpperCase() === bookName.toUpperCase())
@@ -61,16 +73,24 @@ const MainContainer = () => {
         const popularOrganized = (Math.max(...popular))        
         const mostPopular = popular.indexOf(popularOrganized)
         console.log(mostPopular, "most popular");
-        // console.log(searchInput);
-        // console.log(data.data.results)
         setMovieDetails(filteredMovieData[mostPopular]);
-        // console.log(movieDetails, "movie Details");
       }) 
     })      
     .catch((error) => {
-       alert("Invalid book title!")
+        
+      // state to represent error
+      // if error is true display message
+      // turnary in return section
+      // console.log(error.message)
+      if (error.message === "apiData.data.items is undefined") {
+        setError("This book or movie title doesn't exist");
+        setSearchInput("") 
+      } else {
+        setError(true)
+      }        
     });
   }
+  
   
   // index 0 OR randomizer as each search has different
   // for google book api we need to get
@@ -88,8 +108,8 @@ const MainContainer = () => {
   return (
     <section>
       {/*Parent component that will be used to pass down props */}
-    <SearchBar handleClick={handleClick} bookDetails={bookDetails} movieDetails={movieDetails} setSearchInput={setSearchInput} searchInput={searchInput}/>
-    <RatingsResults searchInput={searchInput} />
+      <SearchBar handleClick={handleClick} bookDetails={bookDetails} movieDetails={movieDetails} setSearchInput={setSearchInput} searchInput={searchInput}/>
+      <RatingsResults searchInput={searchInput} error={error}/>      
     </section>
   )
   ;
