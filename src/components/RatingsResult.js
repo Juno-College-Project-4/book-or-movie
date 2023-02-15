@@ -1,13 +1,27 @@
 const RatingsResults = (props) => {
     const searchInput = props.searchInput
+    const bookInfo = props.bookDetails
+    console.log(bookInfo)
     return (
         <>
             <section className="wrapper">
                 <div className="bookContainer">
                     <div className="bookInfo">
                         <h2>{searchInput}</h2>
+                        <div className="bookTitle">
+                            {/* <h3>{bookTitle}</h3> */}
+                        </div>
                         <div className="bookImageContainer">
-                            <img className="bookImage" src={props.bookDetails.imageLinks.thumbnail} alt={''} />
+                            {bookInfo.map((bookImage) => {
+                                console.log(bookImage)
+                                return (
+                                    <div>
+                                        <img src={bookImage.imageLinks.thumbnail} alt="" />
+                                    </div>
+                                    
+                                )
+                                
+                            })}
                         </div>
                         <div className="bookRating">
                             

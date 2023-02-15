@@ -30,19 +30,20 @@ const MainContainer = () => {
     .then((apiData) => {
   
       const bookInfo = apiData.data.items.map((book) => { return book.volumeInfo}
-        ) 
+        ) ;
   
         // console.log(data.data.items[1].volumeInfo.imageLinks.thumbnail) -> FOR IMAGE
       // console.log(data.data.items[1].volumeInfo.description) -> FOR DESCRIPTION
       // console.log(data.data.items[1].volumeInfo.title) -> FOR TITLE
       // console.log(data.data.items[1].volumeInfo.authors) -> FOR AUTHORS
       // console.log(data.data.items[1].volumeInfo.averageRating) -> FOR AVERAGE RATING
-      const bookName = apiData.data.items[1].volumeInfo.title
+      const bookName = apiData.data.items[1].volumeInfo.title;
       // trying to have a strict filter based on user input
       // const filteredBookData = apiData.data.items[1].volumeInfo.filter(obj => obj.title === bookTitle) 
       // setBookTitle(filteredBookData);
     
       setBookDetails(bookInfo);
+      console.log(setBookDetails)
       // const bookToMovie = (bookTitle) => { 
       //   console.log(bookTitle)          
       //   return axios({
@@ -84,16 +85,18 @@ const MainContainer = () => {
     // call the state updater function and use the selected option value to update.
     onEnter();
 
-    // setBookDetails(displayDetails);
+    // const book = e.target.value;
+    // setBookDetails(book);
 
     // setMovieDetails(displayDetails);
   }
+  
   return (
     <section>
       {/*Parent component that will be used to pass down props */}
       {/* <MainContainer bookDetails={bookDetails}/> */}
-    <SearchBar handleClick={handleClick} bookDetails={bookDetails} movieDetails={movieDetails} setSearchInput={setSearchInput} searchInput={searchInput}/>
-    <RatingsResults bookDetails={bookDetails} searchInput={searchInput} />
+      <SearchBar handleClick={handleClick} bookDetails={bookDetails} movieDetails={movieDetails} setSearchInput={setSearchInput} searchInput={searchInput}/>
+      <RatingsResults bookDetails={bookDetails} searchInput={searchInput} />
     </section>
   )
   ;
