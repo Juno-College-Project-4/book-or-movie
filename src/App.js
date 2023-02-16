@@ -1,9 +1,14 @@
-import './App.css';
+import './styles/styles.css';
 import MainContainer from './components/MainContainer';
 
 function App() {
   return (
-    <MainContainer />
+    <>
+      <header>
+        <h1>Books vs Movies</h1>
+      </header>
+      <MainContainer />
+    </>
   );
 }
 

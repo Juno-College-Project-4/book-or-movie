@@ -18,16 +18,18 @@ const RatingsResults = (props) => {
                         <div className="bookImageContainer">
                             {bookInfo.map((bookDescription, i) => {
                                 return (
-                                    <div key={i}>
-                                        <img src={bookDescription.imageLinks.thumbnail} alt="" />
-                                        <h3 key={i}>{bookDescription.title}</h3>
-                                    </div>
-                                    
+                                        <div className="bookList" key={i}>
+                                            <img className="bookImg" src={bookDescription.imageLinks.thumbnail} alt="" />
+
+                                            <div>
+                                                <h3 key={i}>{bookDescription.title}</h3>
+                                            </div>
+                                        </div> 
                                 )  
                             })}
                         </div>
-                </div>  
-            </div>
+                    </div>  
+                 </div>
             </section>
         </>
     )
