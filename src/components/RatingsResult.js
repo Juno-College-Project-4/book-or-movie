@@ -1,6 +1,8 @@
 const RatingsResults = (props) => {
     const searchInput = props.searchInput
     const bookInfo = props.bookDetails
+
+    
     console.log(bookInfo)
     const error = props.error
     return (
@@ -19,12 +21,8 @@ const RatingsResults = (props) => {
                             {bookInfo.map((bookDescription, i) => {
                                 return (
                                     <>
-                                        <div className="bookList" onClick={() => props.onClick(bookDescription.title)} key={i}>
+                                        <div className="bookList" key={i} onClick={() => props.onClick(bookDescription.title)} >
                                             <img className="bookImg" src={bookDescription.imageLinks.thumbnail} alt="" />
-                                        
-                                        </div>
-                                        
-                                        <div>
                                             <h3 key={i}>{bookDescription.title}</h3>
                                         </div>
                                     </>
