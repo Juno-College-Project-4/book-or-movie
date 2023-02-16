@@ -267,8 +267,9 @@ h2 {
 
 h3 {
   font-size: 1.2rem;
-  width: 95%;
-  margin-top: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 5px 4px;
 }
 
 .bookImageContainer {
@@ -278,7 +279,7 @@ h3 {
 }
 
 .bookList {
-  border: 2px solid #f4e6e8;
+  border: 1px solid #f4e6e8;
   text-align: center;
   width: 15rem;
   height: 22rem;
