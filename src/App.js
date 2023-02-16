@@ -6,8 +6,9 @@ function App() {
     <>
       <header>
         <h1>Books vs Movies</h1>
+        <MainContainer />
       </header>
-      <MainContainer />
+      
     </>
   );
 }
