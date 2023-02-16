@@ -9,9 +9,6 @@ const RatingsResults = (props) => {
                 <div className="bookContainer">
                     <div className="bookInfo">
                         <h2>{searchInput}</h2>
-                        <div className="bookTitle">
-                            {/* <h3>{bookTitle}</h3> */}
-                        </div>
                         <p>
                             {
                                 error ? error : ""
@@ -19,51 +16,18 @@ const RatingsResults = (props) => {
                             {/* stretch goal: hide the paragraph vs. what's inside the paragraph */}
                         </p>
                         <div className="bookImageContainer">
-                            {bookInfo.map((bookImage) => {
-                                console.log(bookImage)
+                            {bookInfo.map((bookDescription, i) => {
                                 return (
-                                    <div>
-                                        <img src={bookImage.imageLinks.thumbnail} alt="" />
+                                    <div key={i}>
+                                        <img src={bookDescription.imageLinks.thumbnail} alt="" />
+                                        <h3 key={i}>{bookDescription.title}</h3>
                                     </div>
                                     
-                                )
-                                
+                                )  
                             })}
                         </div>
-                        <div className="bookRating">
-                            
-                        </div>
-                        <div className="bookAuthor">
-
-                        </div>
-                        <div className="bookStars">
-
-                        </div>
-                        <div className="bookDescription">
-        
-                        </div>
-                    </div>
-                </div>
-
-                <div className="movieContainer">
-                    <div className="movieInfo">
-                        <div className="movieImageContainer">
-                            {/* <img className="movieImage" src={ } alt={ } /> */}
-                        </div>
-                        <div className="movieRating">
-
-                        </div>
-                        <div className="movieAuthor">
-
-                        </div>
-                        <div className="movieStars">
-
-                        </div>
-                        <div className="movieDescription">
-
-                        </div>
-                    </div>
-                </div>
+                </div>  
+            </div>
             </section>
         </>
     )
