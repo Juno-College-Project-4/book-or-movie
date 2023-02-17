@@ -14,6 +14,8 @@ const MainContainer = () => {
   const [selectedBook, setSelectedBook] = useState("");
 
   //4. define a side effect which will run once the user searches for a book or movie title
+
+  // NEED TO TAKE A LOOK INTO THE BOOK API. NEEDS TO GIVE US BETTER TITLES OF THE BOOK..
   const onEnter = () => {
     axios({
       url: "https://www.googleapis.com/books/v1/volumes",
@@ -73,18 +75,19 @@ const MainContainer = () => {
       },
     }).then((data) => {
       // filtered movie data based on user input
-      // const filteredMovieData = data.data.results.filter(
-      //   (movie) =>
-      //     movie.original_title.toUpperCase() === bookTitle.toUpperCase()
-      // );
+      console.log(data)
+      const filteredMovieData = data.data.results.filter(
+        (movie) =>
+          movie.original_title.toUpperCase() === bookTitle.toUpperCase()
+      );
 
-      // const popular = filteredMovieData.map(
-      //   (popularMovie) => popularMovie.popularity
-      // );
-      // const popularOrganized = Math.max(...popular);
-      // const mostPopular = popular.indexOf(popularOrganized);
-      // console.log(mostPopular, "most popular");
-      // setMovieDetails(filteredMovieData[mostPopular]);
+      const vote = filteredMovieData.map(
+        (popularMovie) => popularMovie.vote_average
+      );
+      const popularOrganized = Math.max(...vote);
+      const mostPopular = vote.indexOf(popularOrganized);
+      console.log(mostPopular, "most popular");
+      setMovieDetails(filteredMovieData[mostPopular]);
       // setMovieDetails(filteredMovieData);
       // NEED TO LOOK AT MOVIE - SEE IF THERE IS A BETTER WAY TO PULL RESULTS (MORE FORGIVING)
       console.log(data);
