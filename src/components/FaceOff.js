@@ -1,16 +1,14 @@
-import { Outlet } from 'react-router-dom';
-
 const FaceOff = (props) => {
-  const displayBook = props.bookDetails;
-
+  const displayBook = props?.bookDetails;
+  console.log(displayBook)
   return (
     <section>
       <div className='bookResult'>
-        <h3>{displayBook.title}</h3>
+        <h3>{displayBook.title}</h3>        
         {/* <img src={displayBook.imageLinks.thumbnail} /> */}
-        <div className='author'>{displayBook.author}</div>
+        <h4 className='author'>{displayBook.authors}</h4>
         <div className='rating'>{displayBook.rating}</div>
-        <p className='summary'>{displayBook.summary}</p>
+        <p className='summary'>{displayBook.summary}</p> 
       </div>
 
       <div>
@@ -28,7 +26,6 @@ const FaceOff = (props) => {
       <button>Didn't Read Book</button>
       <button className='agreeOrDisagree'>Agree or Disagree</button>
       <button>Didn't Watch Movie</button>
-      <Outlet />
     </section>
   );
 };

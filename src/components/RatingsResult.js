@@ -1,35 +1,40 @@
+import { Link, Outlet } from 'react-router-dom';
+
 const RatingsResults = (props) => {
   const searchInput = props.searchInput;
   const bookInfo = props.bookDetails;
   const error = props.error;
   return (
     <>
-      <section className="wrapper">
-        <div className="bookContainer">
-          <div className="bookInfo">
+      <section className='wrapper'>
+        <div className='bookContainer'>
+          <div className='bookInfo'>
             <p>
-              {error ? error : ""}
+              {error ? error : ''}
               {/* stretch goal: hide the paragraph vs. what's inside the paragraph */}
             </p>
-            <div className="bookImageContainer">
+            <div className='bookImageContainer'>
               {bookInfo.map((bookDescription, i) => {
                 return (
                   <>
                     <div
-                      className="bookList"
+                      className='bookList'
                       key={i}
                       onClick={() => props.onClick(bookDescription.title)}
-                    >                      
-                      {
-                        (bookDescription.imageLinks && bookDescription.imageLinks.thumbnail)
-                        ? <img 
-                          className="bookImg"
+                    >
+                      {bookDescription.imageLinks &&
+                      bookDescription.imageLinks.thumbnail ? (
+                        <img
+                          className='bookImg'
                           src={bookDescription.imageLinks.thumbnail}
-                          alt=""
-                          />
-                        : <h3>{bookDescription.infoLink}</h3>  
-                      }        
-                      <h3 key={i}>{bookDescription.title}</h3>
+                          alt=''
+                        />
+                      ) : (
+                        <h3>{bookDescription.infoLink}</h3>
+                      )}
+                      <Link to='/faceoff'>
+                        <h3 key={i}>{bookDescription.title}</h3>
+                      </Link>
                     </div>
                   </>
                 );
@@ -38,6 +43,7 @@ const RatingsResults = (props) => {
           </div>
         </div>
       </section>
+      <Outlet />
     </>
   );
 };

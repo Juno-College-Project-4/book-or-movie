@@ -3,9 +3,9 @@ import { useState } from "react";
 import SearchBar from "./SearchBar";
 //2. import axios
 import axios from "axios";
-import RatingsResults from "./RatingsResult";
+import RatingsResult from "./RatingsResult";
 import FaceOff from "./FaceOff";
-import { Link } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 
 const MainContainer = () => {
@@ -37,7 +37,7 @@ const MainContainer = () => {
         }
       })
       .then((apiData) => {
-        console.log(apiData)
+        // console.log(apiData)
 
         const bookInfo = apiData.data.items.map((book) => {
           return book.volumeInfo;
@@ -67,7 +67,6 @@ const MainContainer = () => {
       });
   };
   const onClick = (bookTitle) => {
-    console.log(bookTitle);
     axios({
       url: `https://api.themoviedb.org/3/search/movie`,
       params: {
@@ -93,8 +92,7 @@ const MainContainer = () => {
       // setMovieDetails(filteredMovieData);
       // NEED TO LOOK AT MOVIE - SEE IF THERE IS A BETTER WAY TO PULL RESULTS (MORE FORGIVING)
       console.log(data);
-    });
-    <Link to ="./FaceOff"></Link>
+    });    
   };
   // index 0 OR randomizer as each search has different
   // for google book api we need to get
@@ -121,16 +119,25 @@ const MainContainer = () => {
         setSearchInput={setSearchInput}
         searchInput={searchInput}
       />
-      <RatingsResults
-        bookDetails={bookDetails}
-        searchInput={searchInput}
-        error={error}
-        onClick={onClick}
-      />
-      <FaceOff 
-        bookDetails={bookDetails} 
-        movieDetails={movieDetails} 
-      />
+      <Routes>
+        <Route
+          path='/faceoff'
+          element={<FaceOff bookDetails={bookDetails} />}
+        />
+        <Route
+          path='/'
+          element={
+            <RatingsResult
+              bookDetails={bookDetails}
+              searchInput={searchInput}
+              error={error}
+              onClick={onClick}
+            />
+          }
+        />
+      </Routes>
+
+      {/* <FaceOff /> */}
     </section>
   );
 };
