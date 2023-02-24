@@ -14,84 +14,87 @@ const MainContainer = () => {
   const [bookDetails, setBookDetails] = useState([]);
   const [movieDetails, setMovieDetails] = useState([]);
   const [error, setError] = useState(false);
-  const [selectedBook, setSelectedBook] = useState("");
 
   //4. define a side effect which will run once the user searches for a book or movie title
 
   // NEED TO TAKE A LOOK INTO THE BOOK API. NEEDS TO GIVE US BETTER TITLES OF THE BOOK..
   const onEnter = () => {
     axios({
-      url: "https://www.googleapis.com/books/v1/volumes",
-      method: "GET",
-      dataResponse: "json",
+      url: 'https://api.themoviedb.org/3/search/movie',
       params: {
-        API_KEY: "AIzaSyAUtAytZDfo4ohe1l2O29rUzdY7oypqRts",
-        q: searchInput,
-      },
-    })
-      .then((apiData) => {
-        if (apiData === apiData) {
-          return apiData;
+        api_key: 'abb23cb27cf45e3859e3f8c484c9463a',
+        include_adult: false,
+        original_language: 'en',
+        query: searchInput,        
+      },            
+    })    
+      .then((data) => {
+        if (data) {
+          console.log(data)
+          return data;
         } else {
-          throw new Error(apiData.data.items === "");
-        }
-      })
-      .then((apiData) => {
-        // console.log(apiData)
-
-        const bookInfo = apiData.data.items.map((book) => {
-          return book.volumeInfo;
-        });
-
-        setBookDetails(bookInfo);
-
-        // const bookName = apiData.data.items[1].volumeInfo.title;
-        // trying to have a strict filter based on user input
-        // const filteredBookData = apiData.data.items[1].volumeInfo.filter(obj => obj.title === bookTitle)
-        // setBookTitle(filteredBookData);
-
-        // function goes here for bookDetails.title
-        // wrap the movie axios into a function here.
+          throw new Error(data.data.results === '');
+        }        
+      })      
+      .then((data) => {   
+        // console.log(data)  
+        setMovieDetails(data.data.results)   
+        // console.log(movieDetails)
+        
       })
       .catch((error) => {
         // state to represent error
         // if error is true display message
         // turnary in return section
         // console.log(error.message)
-        if (error.message === "apiData.data.items is undefined") {
+        if (error.message === 'apiData.data.results is undefined') {
           setError("This book or movie title doesn't exist");
-          setSearchInput("");
+          setSearchInput('');
         } else {
           setError(true);
         }
       });
   };
   const onClick = (bookTitle) => {
+    console.log(bookTitle)
     axios({
-      url: `https://api.themoviedb.org/3/search/movie`,
+      url: 'https://www.googleapis.com/books/v1/volumes',
+      method: 'GET',
+      dataResponse: 'json',
       params: {
-        api_key: "abb23cb27cf45e3859e3f8c484c9463a",
-        include_adult: false,
-        language: "en",
-        query: bookTitle,
+        API_KEY: 'AIzaSyAUtAytZDfo4ohe1l2O29rUzdY7oypqRts',
+        q: bookTitle,
       },
-    }).then((data) => {
-      // filtered movie data based on user input
-      const filteredMovieData = data.data.results.filter(
-        (movie) =>
-          movie.original_title.toUpperCase() === bookTitle.toUpperCase()
-      );
+    }).then((apiData) => {
+      console.log(apiData)
+      const bookInfo = apiData.data.items.map((book) => {
+        return book.volumeInfo;
+      });
 
-      const vote = filteredMovieData.map(
-        (popularMovie) => popularMovie.vote_average
-      );
-      const popularOrganized = Math.max(...vote);
-      const mostPopular = vote.indexOf(popularOrganized);
-      console.log(mostPopular, "most popular");
-      setMovieDetails(filteredMovieData[mostPopular]);
+      const filteredBookData = bookInfo.filter((filteredBook) => {
+        console.log(filteredBook[0])
+        // filteredBook.title.toUpperCase() === bookTitle.toUpperCase();
+      });
+
+      
+
+    
+      
+     
+      // const vote = filteredMovieData.map(
+      //   (popularMovie) => popularMovie.vote_average
+      // );
+      // const popularOrganized = Math.max(...vote);
+      // console.log(popularOrganized, 'popularOrganized');
+      // const mostPopular = vote.indexOf(popularOrganized);
+      // // console.log(mostPopular, "most popular");
+      // setMovieDetails(filteredMovieData[mostPopular]);
+      // filtered movie data based on user input
       // setMovieDetails(filteredMovieData);
-      // NEED TO LOOK AT MOVIE - SEE IF THERE IS A BETTER WAY TO PULL RESULTS (MORE FORGIVING)
-      console.log(data);
+      // // NEED TO LOOK AT MOVIE - SEE IF THERE IS A BETTER WAY TO PULL RESULTS (MORE FORGIVING)
+      // console.log(data.data.results);
+      // console.log(movieDetails)
+      setBookDetails(bookInfo);
     });    
   };
   // index 0 OR randomizer as each search has different
@@ -122,14 +125,16 @@ const MainContainer = () => {
       <Routes>
         <Route
           path='/faceoff'
-          element={<FaceOff bookDetails={bookDetails} />}
+          element={
+            <FaceOff bookDetails={bookDetails} movieDetails={movieDetails} />
+          }
         />
         <Route
           path='/'
           element={
             <RatingsResult
-              bookDetails={bookDetails}
               searchInput={searchInput}
+              movieDetails={movieDetails}
               error={error}
               onClick={onClick}
             />

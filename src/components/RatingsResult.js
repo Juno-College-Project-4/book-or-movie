@@ -1,39 +1,41 @@
 import { Link, Outlet } from 'react-router-dom';
 
 const RatingsResults = (props) => {
-  const searchInput = props.searchInput;
-  const bookInfo = props.bookDetails;
+  const movieResult = props.movieDetails;
   const error = props.error;
   return (
     <>
       <section className='wrapper'>
-        <div className='bookContainer'>
-          <div className='bookInfo'>
+        <div className='movieContainer'>
+          <div className='movieInfo'>
             <p>
               {error ? error : ''}
               {/* stretch goal: hide the paragraph vs. what's inside the paragraph */}
             </p>
-            <div className='bookImageContainer'>
-              {bookInfo.map((bookDescription, i) => {
+            <div className='movieImageContainer'>
+              {movieResult.map((movieDescription, i) => {   
+                 const movieImage = `https://image.tmdb.org/t/p/w500${movieDescription.poster_path}`;             
                 return (
                   <>
                     <div
-                      className='bookList'
+                      className='movieList'
                       key={i}
-                      onClick={() => props.onClick(bookDescription.title)}
+                      onClick={() =>
+                        props.onClick(movieDescription.title)
+                      }
                     >
-                      {bookDescription.imageLinks &&
-                      bookDescription.imageLinks.thumbnail ? (
+                      {movieDescription.poster_path &&
+                      movieDescription.poster_path ? (
                         <img
-                          className='bookImg'
-                          src={bookDescription.imageLinks.thumbnail}
+                          className='movieImg'
+                          src={movieImage}
                           alt=''
                         />
                       ) : (
-                        <h3>{bookDescription.infoLink}</h3>
+                        <h3>{movieDescription.title}</h3>
                       )}
                       <Link to='/faceoff'>
-                        <h3 key={i}>{bookDescription.title}</h3>
+                        <h3 key={i}>{movieDescription.title}</h3>
                       </Link>
                     </div>
                   </>

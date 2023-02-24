@@ -272,13 +272,13 @@ h3 {
   padding: 5px 4px;
 }
 
-.bookImageContainer {
+.movieImageContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
-.bookList {
+.movieList {
   border: 1px solid #f4e6e8;
   text-align: center;
   width: 15rem;
@@ -287,12 +287,12 @@ h3 {
   box-shadow: -4px 4px 6px #8C8C8C;
 }
 
-.bookList:hover {
+.movieList:hover {
   transform: scale(1.04);
   cursor: pointer;
 }
 
-.bookImg {
+.movieImg {
   width: 100%;
   height: 70%;
   -o-object-fit: cover;

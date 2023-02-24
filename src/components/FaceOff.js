@@ -1,14 +1,15 @@
 const FaceOff = (props) => {
-  const displayBook = props?.bookDetails;
-  console.log(displayBook)
+  const displayMovie = props.movieDetails;
+  // const displayMovie = props?
+  // console.log(displayBook)
   return (
     <section>
       <div className='bookResult'>
-        <h3>{displayBook.title}</h3>        
-        {/* <img src={displayBook.imageLinks.thumbnail} /> */}
-        <h4 className='author'>{displayBook.authors}</h4>
-        <div className='rating'>{displayBook.rating}</div>
-        <p className='summary'>{displayBook.summary}</p> 
+        <h3>{displayMovie.title}</h3>
+        {/* <img src={displayBook?.imageLinks.thumbnail} /> */}
+        <h4 className='author'>{displayMovie.authors}</h4>
+        <div className='rating'>{displayMovie.rating}</div>
+        <p className='summary'>{displayMovie.description}</p>
       </div>
 
       <div>
