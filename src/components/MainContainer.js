@@ -12,6 +12,8 @@ const MainContainer = () => {
   //3. intiliaze state to hold the data - The information on the book will be returned from the api
   const [searchInput, setSearchInput] = useState("");
   const [bookDetails, setBookDetails] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState([]);
+
   const [movieDetails, setMovieDetails] = useState([]);
   const [error, setError] = useState(false);
 
@@ -57,27 +59,52 @@ const MainContainer = () => {
   };
   const onClick = (bookTitle) => {
     console.log(bookTitle)
+    setSelectedMovie(bookTitle); 
     axios({
       url: 'https://www.googleapis.com/books/v1/volumes',
       method: 'GET',
       dataResponse: 'json',
       params: {
         API_KEY: 'AIzaSyAUtAytZDfo4ohe1l2O29rUzdY7oypqRts',
-        q: bookTitle,
+        q: bookTitle.title,
       },
     }).then((apiData) => {
       console.log(apiData)
-      const bookInfo = apiData.data.items.map((book) => {
-        return book.volumeInfo;
-      });
+      // const bookInfo = apiData.data.items.map((book) => {
+      //   if (book.volumeInfo.title.toUpperCase() === bookTitle.title.toUpperCase()) {
+      //     return book.volumeInfo;
+      //   }
+      // });
+      // console.log(bookInfo)
+      // const filteredBookData = bookInfo.filter((filteredBook) => {
+      let selectedBook;
+      
+      for (let i = 0; i < apiData.data.items.length; i++) {
+        let book = apiData.data.items[i].volumeInfo;
+        let rating = 0;
+        console.log(apiData.data.items[i]);
+        if (book.title.toUpperCase() === bookTitle.title.toUpperCase()) {
+          //if rating < averageRating then set rating=averageRating AND set selectedBookElement
+          if (rating < book.averageRating) {
+            rating = book.averageRating;
+            selectedBook = book;
+          }
+        }
+      }
+      console.log(selectedBook);
+      setBookDetails(selectedBook);
 
-      const filteredBookData = bookInfo.filter((filteredBook) => {
-        console.log(filteredBook[0])
+      if (selectedBook) {
+        return selectedBook;
+      } else {
+        // what happens if it didn't find any book?
+          setError(true);        
+      }
         // filteredBook.title.toUpperCase() === bookTitle.toUpperCase();
+        // console.log(filteredBook);
       });
 
       
-
     
       
      
@@ -94,8 +121,11 @@ const MainContainer = () => {
       // // NEED TO LOOK AT MOVIE - SEE IF THERE IS A BETTER WAY TO PULL RESULTS (MORE FORGIVING)
       // console.log(data.data.results);
       // console.log(movieDetails)
-      setBookDetails(bookInfo);
-    });    
+      // setBookDetails(bookInfo);
+      // setBookDetails(filteredBookData);
+      // console.log(filteredBookData);
+
+    // });   
   };
   // index 0 OR randomizer as each search has different
   // for google book api we need to get
@@ -126,7 +156,7 @@ const MainContainer = () => {
         <Route
           path='/faceoff'
           element={
-            <FaceOff bookDetails={bookDetails} movieDetails={movieDetails} />
+            <FaceOff bookDetails={bookDetails} selectedMovie={selectedMovie} />
           }
         />
         <Route

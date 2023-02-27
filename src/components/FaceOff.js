@@ -1,33 +1,78 @@
+// import RatingsResults from "./RatingsResult";
+
 const FaceOff = (props) => {
-  const displayMovie = props.movieDetails;
+  const displayMovie = props.selectedMovie;
+  const displayBook = props.bookDetails;
+  console.log(displayMovie);
+  const movieImage = `https://image.tmdb.org/t/p/w500${displayMovie.poster_path}`;
   // const displayMovie = props?
   // console.log(displayBook)
   return (
-    <section>
-      <div className='bookResult'>
-        <h3>{displayMovie.title}</h3>
-        {/* <img src={displayBook?.imageLinks.thumbnail} /> */}
-        <h4 className='author'>{displayMovie.authors}</h4>
-        <div className='rating'>{displayMovie.rating}</div>
-        <p className='summary'>{displayMovie.description}</p>
-      </div>
+    <>
+      <section className='resultContainer'>
+        <div className='bookResult'>
+          <div className='bookTopInfo'>
+            <div className='bookInfoDetails'>
+              <div className='titleOfBook'>
+                <h3 className='eachBookTitle'>{displayBook.title}</h3>
+              </div>
+              <div className='authorAndRating'>
+                <h4 className='author'>Author: {displayBook.authors}</h4>
+                <div className='rating'>
+                  Rating: {displayBook.averageRating}
+                </div>
+              </div>
+            </div>
+            <div className='bookImgContainer'>
+              <img src={displayBook.imageLinks?.thumbnail} />
+            </div>
+          </div>
+          <div className='bookBottomInfo'>
+            <div className='summary'>
+              <span className='plot'>Plot Summary</span>
+              <p>{displayBook.description}</p>
+            </div>
+          </div>
+        </div>
 
-      <div>
-        <h2 className='vsBanner'>VS</h2>
-      </div>
+        <div className='vsBannerContainer'>
+          <h2 className='vsBanner'>VS</h2>
+        </div>
 
-      <div className='movieResult'>
-        <h3></h3>
-        <img />
-        <div className='author'></div>
-        <div className='rating'></div>
-        <p className='summary'></p>
-      </div>
+        <div className='movieResult'>
+          <div className='movieTopInfo'>
+            <div className='movieInfoDetails'>
+              <div className='titleOfMovie'>
+                <h3 className='eachMovieTitle'>{displayMovie.title}</h3>
+              </div>
+              <div className='authorAndRating'>
+                <div className='rating'>
+                  Rating: {displayMovie.vote_average}
+                </div>
+              </div>
+            </div>
+            <div className='moviePhotoContainer'>
+              <img className='moviePhoto' src={movieImage} />
+            </div>
+          </div>
+          {/* stretch goal to use id # and filter out name of directors */}
+          {/* <div className='director'>{displayBook.}</div> */}
 
-      <button>Didn't Read Book</button>
-      <button className='agreeOrDisagree'>Agree or Disagree</button>
-      <button>Didn't Watch Movie</button>
-    </section>
+          <div className='movieBottomInfo'>
+            <div className='summary'>
+              <span className='plot'>Plot Summary</span>
+              <p>{displayMovie.overview}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* stretch goals for voting system from users */}
+      {/* <section className='userButtons'>
+        <button>Didn't Read Book</button>
+        <button className='agreeOrDisagree'>Agree or Disagree</button>
+        <button>Didn't Watch Movie</button>
+      </section> */}
+    </>
   );
 };
 

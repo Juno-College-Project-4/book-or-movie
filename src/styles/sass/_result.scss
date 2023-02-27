@@ -1,0 +1,172 @@
+.resultContainer {
+  padding-top: 30px;
+  display: flex;
+  // justify-content: space-between;
+  margin: auto;
+  width: 80%;
+
+  // .bookResult ---------------------------
+  .bookResult {
+    width: 40%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #f4e6e8;
+    text-align: center;
+    height: 35rem;
+    margin: 10px 5px;
+    box-shadow: -8px 8px 6px #8c8c8c;
+    
+    .bookTopInfo {
+      display: flex;
+      justify-content: space-evenly;
+
+      .bookInfoDetails {
+        border-radius: 2px;
+        border: 1px solid #f4e6e8;
+        text-align: center;
+        width: 15rem;
+        height: 3.5rem;
+        margin: 100px 15px 0 0;
+        box-shadow: -4px 4px 6px #8c8c8c;
+
+        .titleOfBook {
+          .eachBookTitle {
+            border-radius: 10px;
+          }
+        }
+      }
+
+      .bookImgContainer {
+        img {
+          width: 13rem;
+        }
+      }
+
+      .authorAndRating {
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 0.7rem;
+
+        .rating,
+        .author {
+          margin: 21.28px 0;
+          padding: 8px;
+          border-radius: 20px;
+          box-shadow: -4px 4px 6px #8c8c8c;
+        }
+
+        .author {
+          background-color: #ace8cd;
+        }
+
+        .rating {
+          background-color: #f4e6e8;
+        }
+      }
+    }
+
+    .bookBottomInfo {
+      .summary {
+        display: flex;
+        flex-direction: column;
+
+        .plot {
+          text-align: left;
+        }
+
+        p {
+          font-size: 0.8rem;
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  // .movieResult ---------------------------
+  .movieResult {
+    width: 40%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #f4e6e8;
+    text-align: center;
+    height: 35rem;
+    margin: 10px 5px;
+    box-shadow: -8px 8px 6px #8c8c8c;
+
+    .movieTopInfo {
+      display: flex;
+      justify-content: space-evenly;
+
+      .movieInfoDetails {
+        border-radius: 2px;
+        border: 1px solid #f4e6e8;
+        text-align: center;
+        width: 15rem;
+        height: 3.5rem;
+        margin: 100px auto;
+        box-shadow: -4px 4px 6px #8c8c8c;
+
+        .titleOfMovie {
+          .eachMovieTitle {
+            border-radius: 10px;
+          }
+        }
+      }
+      .moviePhotoContainer {
+        .moviePhoto {
+          width: 13rem;
+        }
+      }
+
+      .authorAndRating {
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 0.7rem;
+
+        .rating,
+        .author {
+          margin: 21.28px 0;
+          padding: 8px;
+          border-radius: 20px;
+          box-shadow: -4px 4px 6px #8c8c8c;
+        }
+
+        .author {
+          background-color: #ace8cd;
+        }
+
+        .rating {
+          background-color: #f4e6e8;
+        }
+      }
+    }
+
+    .movieBottomInfo {
+      .summary {
+        display: flex;
+        flex-direction: column;
+
+        .plot {
+          text-align: left;
+        }
+
+        p {
+          font-size: 0.8rem;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+// .vsBannerContainer ----
+.vsBannerContainer {
+  width: 20%;
+  align-items: center;
+  margin: auto;
+  color: #5da9c2;
+  .vsBanner {
+    font-family: 'Maitree', serif;
+    text-shadow: -4px 4px 6px #8c8c8c;
+  }
+}

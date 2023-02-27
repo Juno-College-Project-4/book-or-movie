@@ -221,6 +221,10 @@ html {
   overflow: hidden;
 }
 
+@font-face {
+  font-family: "Maitree";
+  src: url(https://fonts.googleapis.com/css2?family=Maitree:wght@400;700&display=swap);
+}
 .wrapper {
   max-width: 1200px;
   width: 85%;
@@ -229,6 +233,7 @@ html {
 
 body {
   text-align: center;
+  font-family: "Maitree";
 }
 
 header {
@@ -272,6 +277,156 @@ h3 {
   padding: 5px 4px;
 }
 
+.resultContainer {
+  padding-top: 30px;
+  display: flex;
+  margin: auto;
+  width: 80%;
+}
+.resultContainer .bookResult {
+  width: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #f4e6e8;
+  text-align: center;
+  height: 35rem;
+  margin: 10px 5px;
+  box-shadow: -8px 8px 6px #8c8c8c;
+}
+.resultContainer .bookResult .bookTopInfo {
+  display: flex;
+  justify-content: space-evenly;
+}
+.resultContainer .bookResult .bookTopInfo .bookInfoDetails {
+  border-radius: 2px;
+  border: 1px solid #f4e6e8;
+  text-align: center;
+  width: 15rem;
+  height: 3.5rem;
+  margin: 100px 15px 0 0;
+  box-shadow: -4px 4px 6px #8c8c8c;
+}
+.resultContainer .bookResult .bookTopInfo .bookInfoDetails .titleOfBook .eachBookTitle {
+  border-radius: 10px;
+}
+.resultContainer .bookResult .bookTopInfo .bookImgContainer img {
+  width: 13rem;
+}
+.resultContainer .bookResult .bookTopInfo .authorAndRating {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 0.7rem;
+}
+.resultContainer .bookResult .bookTopInfo .authorAndRating .rating,
+.resultContainer .bookResult .bookTopInfo .authorAndRating .author {
+  margin: 21.28px 0;
+  padding: 8px;
+  border-radius: 20px;
+  box-shadow: -4px 4px 6px #8c8c8c;
+}
+.resultContainer .bookResult .bookTopInfo .authorAndRating .author {
+  background-color: #ace8cd;
+}
+.resultContainer .bookResult .bookTopInfo .authorAndRating .rating {
+  background-color: #f4e6e8;
+}
+.resultContainer .bookResult .bookBottomInfo .summary {
+  display: flex;
+  flex-direction: column;
+}
+.resultContainer .bookResult .bookBottomInfo .summary .plot {
+  text-align: left;
+}
+.resultContainer .bookResult .bookBottomInfo .summary p {
+  font-size: 0.8rem;
+  text-align: left;
+}
+.resultContainer .movieResult {
+  width: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #f4e6e8;
+  text-align: center;
+  height: 35rem;
+  margin: 10px 5px;
+  box-shadow: -8px 8px 6px #8c8c8c;
+}
+.resultContainer .movieResult .movieTopInfo {
+  display: flex;
+  justify-content: space-evenly;
+}
+.resultContainer .movieResult .movieTopInfo .movieInfoDetails {
+  border-radius: 2px;
+  border: 1px solid #f4e6e8;
+  text-align: center;
+  width: 15rem;
+  height: 3.5rem;
+  margin: 100px auto;
+  box-shadow: -4px 4px 6px #8c8c8c;
+}
+.resultContainer .movieResult .movieTopInfo .movieInfoDetails .titleOfMovie .eachMovieTitle {
+  border-radius: 10px;
+}
+.resultContainer .movieResult .movieTopInfo .moviePhotoContainer .moviePhoto {
+  width: 13rem;
+}
+.resultContainer .movieResult .movieTopInfo .authorAndRating {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 0.7rem;
+}
+.resultContainer .movieResult .movieTopInfo .authorAndRating .rating,
+.resultContainer .movieResult .movieTopInfo .authorAndRating .author {
+  margin: 21.28px 0;
+  padding: 8px;
+  border-radius: 20px;
+  box-shadow: -4px 4px 6px #8c8c8c;
+}
+.resultContainer .movieResult .movieTopInfo .authorAndRating .author {
+  background-color: #ace8cd;
+}
+.resultContainer .movieResult .movieTopInfo .authorAndRating .rating {
+  background-color: #f4e6e8;
+}
+.resultContainer .movieResult .movieBottomInfo .summary {
+  display: flex;
+  flex-direction: column;
+}
+.resultContainer .movieResult .movieBottomInfo .summary .plot {
+  text-align: left;
+}
+.resultContainer .movieResult .movieBottomInfo .summary p {
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.vsBannerContainer {
+  width: 20%;
+  align-items: center;
+  margin: auto;
+  color: #5da9c2;
+}
+.vsBannerContainer .vsBanner {
+  font-family: "Maitree", serif;
+  text-shadow: -4px 4px 6px #8c8c8c;
+}
+
+input {
+  border-radius: 33px;
+  height: 2rem;
+  width: 20rem;
+  padding-left: 20px;
+  font-size: 1.2rem;
+}
+
+button {
+  background-color: #fff;
+  border-radius: 33px;
+  margin: 30px 8px;
+  padding: 3.5px 8px;
+  font-size: 1.1rem;
+}
+
 .movieImageContainer {
   display: flex;
   flex-wrap: wrap;
@@ -301,23 +456,6 @@ h3 {
      object-position: top;
 }
 
-input {
-  border-radius: 33px;
-  height: 2rem;
-  width: 20rem;
-  padding-left: 20px;
-  font-size: 1.2rem;
-}
-
-button {
-  background-color: #fff;
-  border-radius: 33px;
-  margin: 30px 8px;
-  padding: 3.5px 8px;
-  font-size: 1.1rem;
-}
-
-@font-face {
-  font-family: "Maitree";
-  src: url(https://fonts.googleapis.com/css2?family=Maitree:wght@400;700&display=swap);
+.movieTitle {
+  text-decoration: none;
 }/*# sourceMappingURL=styles.css.map */

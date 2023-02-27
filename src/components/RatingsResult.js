@@ -17,27 +17,25 @@ const RatingsResults = (props) => {
                  const movieImage = `https://image.tmdb.org/t/p/w500${movieDescription.poster_path}`;             
                 return (
                   <>
-                    <div
-                      className='movieList'
-                      key={i}
-                      onClick={() =>
-                        props.onClick(movieDescription.title)
-                      }
-                    >
-                      {movieDescription.poster_path &&
-                      movieDescription.poster_path ? (
-                        <img
-                          className='movieImg'
-                          src={movieImage}
-                          alt=''
-                        />
-                      ) : (
+                  {/* re-routing to .faceoff component onClick .movieList */}
+                    <Link to='/faceoff'>
+                      <div
+                        className='movieList'
+                        key={i}
+                        onClick={() => props.onClick(movieDescription)}
+                      >
+                        {movieDescription.poster_path &&
+                        movieDescription.poster_path ? (
+                          <img className='movieImg' src={movieImage} alt='' />
+                        ) : (
+                          <h3>{movieDescription.title}</h3>
+                        )}
                         <h3>{movieDescription.title}</h3>
-                      )}
-                      <Link to='/faceoff'>
-                        <h3 key={i}>{movieDescription.title}</h3>
-                      </Link>
-                    </div>
+                        {/* <Link to='/faceoff'>
+                          <h3 key={i}>{movieDescription.title}</h3>
+                        </Link> */}
+                      </div>
+                    </Link>
                   </>
                 );
               })}
