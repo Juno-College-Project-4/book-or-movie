@@ -80,7 +80,7 @@ const FaceOff = (props, {isLoading}) => {
                 </div>
               </div>
               <div className="moviePhotoContainer">
-                <img className="moviePhoto" src={movieImage} />
+                <img className="moviePhoto" src={movieImage} alt="image of movie cover" />
               </div>
             </div>
             <div className="movieBottomInfo">

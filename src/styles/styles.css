@@ -419,6 +419,11 @@ h3 {
     padding: 8px;
   }
 }
+@media (max-width: 320px) {
+  .resultContainer .bookResult .bookTopInfo .authorAndRating .author {
+    margin-left: 20px;
+  }
+}
 .resultContainer .bookResult .bookTopInfo .authorAndRating .rating {
   background-color: #f4e6e8;
 }

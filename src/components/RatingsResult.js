@@ -30,7 +30,7 @@ const RatingsResults = (props, {isLoading}) => {
                         {movieDescription.poster_path &&
                         movieDescription.poster_path ? (
                           // need to use some kind of dot notation for the alt text for the description of the movie image
-                          <img className='movieImg' src={movieImage} alt='' />
+                          <img className='movieImg' src={movieImage} alt='image of movie cover' />
                         ) : (
                           <h3>{movieDescription.title}</h3>
                         )}
