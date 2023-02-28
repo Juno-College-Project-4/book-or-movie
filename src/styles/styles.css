@@ -256,12 +256,34 @@ h3 {
   font-weight: 700;
 }
 
+a {
+  text-decoration: none;
+}
+
 h1 {
   margin: 0px;
   padding-top: 60px;
   color: #fff;
   font-size: 4rem;
   text-transform: uppercase;
+}
+@media (max-width: 320px) {
+  h1 {
+    font-size: 1.8rem;
+    padding-top: 30px;
+  }
+}
+@media (max-width: 656px) {
+  h1 {
+    font-size: 3.5rem;
+    padding-top: 30px;
+  }
+}
+@media (max-width: 504px) {
+  h1 {
+    font-size: 2.7rem;
+    padding-top: 30px;
+  }
 }
 
 h2 {
@@ -283,6 +305,13 @@ h3 {
   margin: auto;
   width: 80%;
 }
+@media (max-width: 1185px) {
+  .resultContainer {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+  }
+}
 .resultContainer .bookResult {
   width: 40%;
   padding: 20px;
@@ -293,9 +322,35 @@ h3 {
   margin: 10px 5px;
   box-shadow: -8px 8px 6px #8c8c8c;
 }
+@media (max-width: 1185px) {
+  .resultContainer .bookResult {
+    width: 70%;
+  }
+}
+@media (max-width: 867px) {
+  .resultContainer .bookResult {
+    height: 45rem;
+  }
+}
+@media (max-width: 585px) {
+  .resultContainer .bookResult {
+    width: 100%;
+  }
+}
+@media (max-width: 320px) {
+  .resultContainer .bookResult {
+    height: 55rem;
+  }
+}
 .resultContainer .bookResult .bookTopInfo {
   display: flex;
   justify-content: space-evenly;
+}
+@media (max-width: 867px) {
+  .resultContainer .bookResult .bookTopInfo {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 }
 .resultContainer .bookResult .bookTopInfo .bookInfoDetails {
   border-radius: 2px;
@@ -306,8 +361,30 @@ h3 {
   margin: 100px 15px 0 0;
   box-shadow: -4px 4px 6px #8c8c8c;
 }
+@media (max-width: 1487px) {
+  .resultContainer .bookResult .bookTopInfo .bookInfoDetails {
+    height: 5.5rem;
+    margin: 0 15px 0 0;
+  }
+}
+@media (max-width: 1355px) {
+  .resultContainer .bookResult .bookTopInfo .bookInfoDetails {
+    height: auto;
+  }
+}
+@media (max-width: 867px) {
+  .resultContainer .bookResult .bookTopInfo .bookInfoDetails {
+    border: none;
+    box-shadow: none;
+  }
+}
 .resultContainer .bookResult .bookTopInfo .bookInfoDetails .titleOfBook .eachBookTitle {
   border-radius: 10px;
+}
+@media (max-width: 1487px) {
+  .resultContainer .bookResult .bookTopInfo .bookInfoDetails .titleOfBook .eachBookTitle {
+    margin: 10px 0;
+  }
 }
 .resultContainer .bookResult .bookTopInfo .bookImgContainer img {
   width: 13rem;
@@ -316,6 +393,11 @@ h3 {
   display: flex;
   justify-content: space-evenly;
   font-size: 0.7rem;
+}
+@media (max-width: 1185px) {
+  .resultContainer .bookResult .bookTopInfo .authorAndRating {
+    flex-wrap: wrap;
+  }
 }
 .resultContainer .bookResult .bookTopInfo .authorAndRating .rating,
 .resultContainer .bookResult .bookTopInfo .authorAndRating .author {
@@ -327,15 +409,42 @@ h3 {
 .resultContainer .bookResult .bookTopInfo .authorAndRating .author {
   background-color: #ace8cd;
 }
+@media (max-width: 1253px) {
+  .resultContainer .bookResult .bookTopInfo .authorAndRating .author {
+    padding: 4px;
+  }
+}
+@media (max-width: 1185px) {
+  .resultContainer .bookResult .bookTopInfo .authorAndRating .author {
+    padding: 8px;
+  }
+}
+@media (max-width: 320px) {
+  .resultContainer .bookResult .bookTopInfo .authorAndRating .author {
+    margin-left: 20px;
+  }
+}
 .resultContainer .bookResult .bookTopInfo .authorAndRating .rating {
   background-color: #f4e6e8;
+}
+@media (max-width: 1487px) {
+  .resultContainer .bookResult .bookTopInfo .authorAndRating .rating {
+    margin-top: 10px;
+  }
 }
 .resultContainer .bookResult .bookBottomInfo .summary {
   display: flex;
   flex-direction: column;
+  margin-top: 15px;
+}
+@media (max-width: 867px) {
+  .resultContainer .bookResult .bookBottomInfo .summary {
+    align-items: center;
+  }
 }
 .resultContainer .bookResult .bookBottomInfo .summary .plot {
   text-align: left;
+  text-decoration: underline;
 }
 .resultContainer .bookResult .bookBottomInfo .summary p {
   font-size: 0.8rem;
@@ -351,9 +460,35 @@ h3 {
   margin: 10px 5px;
   box-shadow: -8px 8px 6px #8c8c8c;
 }
+@media (max-width: 1185px) {
+  .resultContainer .movieResult {
+    width: 70%;
+  }
+}
+@media (max-width: 867px) {
+  .resultContainer .movieResult {
+    height: 45rem;
+  }
+}
+@media (max-width: 585px) {
+  .resultContainer .movieResult {
+    width: 100%;
+  }
+}
+@media (max-width: 320px) {
+  .resultContainer .movieResult {
+    height: 55rem;
+  }
+}
 .resultContainer .movieResult .movieTopInfo {
   display: flex;
   justify-content: space-evenly;
+}
+@media (max-width: 867px) {
+  .resultContainer .movieResult .movieTopInfo {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 }
 .resultContainer .movieResult .movieTopInfo .movieInfoDetails {
   border-radius: 2px;
@@ -364,8 +499,25 @@ h3 {
   margin: 100px auto;
   box-shadow: -4px 4px 6px #8c8c8c;
 }
+@media (max-width: 1487px) {
+  .resultContainer .movieResult .movieTopInfo .movieInfoDetails {
+    height: auto;
+    margin: 0 15px 0 0;
+  }
+}
+@media (max-width: 867px) {
+  .resultContainer .movieResult .movieTopInfo .movieInfoDetails {
+    border: none;
+    box-shadow: none;
+  }
+}
 .resultContainer .movieResult .movieTopInfo .movieInfoDetails .titleOfMovie .eachMovieTitle {
   border-radius: 10px;
+}
+@media (min-width: 1487px) {
+  .resultContainer .movieResult .movieTopInfo .movieInfoDetails .titleOfMovie .eachMovieTitle {
+    height: 5.5rem;
+  }
 }
 .resultContainer .movieResult .movieTopInfo .moviePhotoContainer .moviePhoto {
   width: 13rem;
@@ -391,9 +543,16 @@ h3 {
 .resultContainer .movieResult .movieBottomInfo .summary {
   display: flex;
   flex-direction: column;
+  margin-top: 15px;
+}
+@media (max-width: 867px) {
+  .resultContainer .movieResult .movieBottomInfo .summary {
+    align-items: center;
+  }
 }
 .resultContainer .movieResult .movieBottomInfo .summary .plot {
   text-align: left;
+  text-decoration: underline;
 }
 .resultContainer .movieResult .movieBottomInfo .summary p {
   font-size: 0.8rem;
@@ -411,12 +570,45 @@ h3 {
   text-shadow: -4px 4px 6px #8c8c8c;
 }
 
+.winnerBanner {
+  background-color: #f4e6e8;
+  padding-top: 10px;
+  border-radius: 2px;
+  border: 1px solid #f4e6e8;
+  text-align: center;
+  width: 18rem;
+  height: 3.5rem;
+  margin: 30px auto;
+  box-shadow: -4px 4px 6px #8c8c8c;
+}
+@media (max-width: 656px) {
+  .winnerBanner {
+    margin-top: 5rem;
+  }
+}
+@media (max-width: 656px) {
+  .winnerBanner {
+    margin-top: 5rem;
+  }
+}
+
 input {
   border-radius: 33px;
   height: 2rem;
   width: 20rem;
   padding-left: 20px;
   font-size: 1.2rem;
+}
+@media (max-width: 320px) {
+  input {
+    display: flex;
+    width: 100%;
+  }
+}
+@media (max-width: 504px) {
+  input {
+    margin-top: 1rem;
+  }
 }
 
 button {
@@ -425,6 +617,16 @@ button {
   margin: 30px 8px;
   padding: 3.5px 8px;
   font-size: 1.1rem;
+}
+@media (max-width: 320px) {
+  button {
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 504px) {
+  button {
+    margin-top: 10px;
+  }
 }
 
 .movieImageContainer {

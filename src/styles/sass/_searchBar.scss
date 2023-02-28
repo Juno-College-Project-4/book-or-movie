@@ -1,4 +1,5 @@
 input {
+<<<<<<< HEAD
   border-radius: 33px;
   height: 2rem;
   width: 20rem;
@@ -13,3 +14,37 @@ button {
   padding: 3.5px 8px;
   font-size: 1.1rem;
 }
+=======
+    border-radius: 33px;
+    height: 2rem;
+    width: 20rem;
+    padding-left: 20px;
+    font-size: 1.2rem;
+
+    @media (max-width:320px) {
+        display: flex;
+        width: 100%;
+    }
+
+    @media (max-width:504px) {
+        margin-top: 1rem;
+    }
+}
+
+button {
+    background-color: #fff;
+    border-radius: 33px;
+    margin: 30px 8px;
+    padding: 3.5px 8px;
+    font-size: 1.1rem;
+
+    @media (max-width:320px) {
+        margin-top: 1rem;
+    }
+
+    @media (max-width:504px) {
+        margin-top: 10px;
+    }
+
+}
+>>>>>>> fac5d9cc1027dbcc466cfbae96fc1e51580597f3

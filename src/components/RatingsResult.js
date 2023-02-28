@@ -1,11 +1,14 @@
 import { Link, Outlet } from 'react-router-dom';
+import Loading from './Loading';
 
-const RatingsResults = (props) => {
+const RatingsResults = (props, {isLoading}) => {
   const movieResult = props.movieDetails;
   const error = props.error;
+
+  if (isLoading) return <Loading />;
   return (
     <>
-      <section className='wrapper'>
+      <section>
         <div className='movieContainer'>
           <div className='movieInfo'>
             <p>
@@ -26,7 +29,8 @@ const RatingsResults = (props) => {
                       >
                         {movieDescription.poster_path &&
                         movieDescription.poster_path ? (
-                          <img className='movieImg' src={movieImage} alt='movie cover selected by user' />
+                          // need to use some kind of dot notation for the alt text for the description of the movie image
+                          <img className='movieImg' src={movieImage} alt='movie cover is showing based on user selection' />
                         ) : (
                           <h3>{movieDescription.title}</h3>
                         )}
