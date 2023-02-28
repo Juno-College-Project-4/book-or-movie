@@ -5,8 +5,7 @@ import SearchBar from "./SearchBar";
 import axios from "axios";
 import RatingsResult from "./RatingsResult";
 import FaceOff from "./FaceOff";
-import { Route, Routes } from 'react-router-dom';
-
+import { Route, Routes } from "react-router-dom";
 
 const MainContainer = () => {
   //3. intiliaze state to hold the data - The information on the book will be returned from the api
@@ -19,70 +18,57 @@ const MainContainer = () => {
 
   //4. define a side effect which will run once the user searches for a book or movie title
 
-  // NEED TO TAKE A LOOK INTO THE BOOK API. NEEDS TO GIVE US BETTER TITLES OF THE BOOK..
   const onEnter = () => {
     axios({
-      url: 'https://api.themoviedb.org/3/search/movie',
+      url: "https://api.themoviedb.org/3/search/movie",
       params: {
-        api_key: 'abb23cb27cf45e3859e3f8c484c9463a',
+        api_key: "abb23cb27cf45e3859e3f8c484c9463a",
         include_adult: false,
-        original_language: 'en',
-        query: searchInput,        
-      },            
-    })    
+        original_language: "en",
+        query: searchInput,
+      },
+    })
       .then((data) => {
         if (data) {
-          console.log(data)
+          // console.log(data);
           return data;
         } else {
-          throw new Error(data.data.results === '');
-        }        
-      })      
-      .then((data) => {   
-        // console.log(data)  
-        setMovieDetails(data.data.results)   
-        // console.log(movieDetails)
-        
+          throw new Error(data.data.results === "");
+        }
+      })
+      .then((data) => {
+        setMovieDetails(data.data.results);
       })
       .catch((error) => {
         // state to represent error
         // if error is true display message
         // turnary in return section
-        // console.log(error.message)
-        if (error.message === 'apiData.data.results is undefined') {
+        if (error.message === "apiData.data.results is undefined") {
           setError("This book or movie title doesn't exist");
-          setSearchInput('');
+          setSearchInput("");
         } else {
           setError(true);
         }
       });
   };
   const onClick = (bookTitle) => {
-    console.log(bookTitle)
-    setSelectedMovie(bookTitle); 
+    // console.log(bookTitle);
+    setSelectedMovie(bookTitle);
     axios({
-      url: 'https://www.googleapis.com/books/v1/volumes',
-      method: 'GET',
-      dataResponse: 'json',
+      url: "https://www.googleapis.com/books/v1/volumes",
+      method: "GET",
+      dataResponse: "json",
       params: {
-        API_KEY: 'AIzaSyAUtAytZDfo4ohe1l2O29rUzdY7oypqRts',
+        API_KEY: "AIzaSyAUtAytZDfo4ohe1l2O29rUzdY7oypqRts",
         q: bookTitle.title,
       },
     }).then((apiData) => {
-      console.log(apiData)
-      // const bookInfo = apiData.data.items.map((book) => {
-      //   if (book.volumeInfo.title.toUpperCase() === bookTitle.title.toUpperCase()) {
-      //     return book.volumeInfo;
-      //   }
-      // });
-      // console.log(bookInfo)
-      // const filteredBookData = bookInfo.filter((filteredBook) => {
       let selectedBook;
-      
+
       for (let i = 0; i < apiData.data.items.length; i++) {
         let book = apiData.data.items[i].volumeInfo;
         let rating = 0;
-        console.log(apiData.data.items[i]);
+        // console.log(apiData.data.items[i]);
         if (book.title.toUpperCase() === bookTitle.title.toUpperCase()) {
           //if rating < averageRating then set rating=averageRating AND set selectedBookElement
           if (rating < book.averageRating) {
@@ -91,60 +77,32 @@ const MainContainer = () => {
           }
         }
       }
-      console.log(selectedBook);
+
+      // updated the error handling for selectedBook
+      if (selectedBook === undefined) {
+        setError(true);
+        return;
+      }
+      // console.log(selectedBook);
       setBookDetails(selectedBook);
 
-      if (selectedBook) {
-        return selectedBook;
-      } else {
-        // what happens if it didn't find any book?
-          setError(true);        
-      }
-        // filteredBook.title.toUpperCase() === bookTitle.toUpperCase();
-        // console.log(filteredBook);
-      });
-
-      
-    
-      
-     
-      // const vote = filteredMovieData.map(
-      //   (popularMovie) => popularMovie.vote_average
-      // );
-      // const popularOrganized = Math.max(...vote);
-      // console.log(popularOrganized, 'popularOrganized');
-      // const mostPopular = vote.indexOf(popularOrganized);
-      // // console.log(mostPopular, "most popular");
-      // setMovieDetails(filteredMovieData[mostPopular]);
-      // filtered movie data based on user input
-      // setMovieDetails(filteredMovieData);
-      // // NEED TO LOOK AT MOVIE - SEE IF THERE IS A BETTER WAY TO PULL RESULTS (MORE FORGIVING)
-      // console.log(data.data.results);
-      // console.log(movieDetails)
-      // setBookDetails(bookInfo);
-      // setBookDetails(filteredBookData);
-      // console.log(filteredBookData);
-
-    // });   
+      // if (selectedBook) {
+      //   return selectedBook;
+      // } else {
+      //   // what happens if it didn't find any book?
+      //   setError(true);
+      // }
+    });
   };
-  // index 0 OR randomizer as each search has different
-  // for google book api we need to get
-  // index1, volumeInfo -> averageRating, volumeInfo ->description, volumeInfo -> imageLinks -> thumbnail, volumneInfo -> authors,
+
   const handleClick = (e) => {
     e.preventDefault();
-
     // call the state updater function and use the selected option value to update.
     onEnter();
-
-    // const book = e.target.value;
-    // setBookDetails(book);
-
-    // setMovieDetails(displayDetails);
   };
 
   return (
     <section>
-      {/*Parent component that will be used to pass down props */}
       <SearchBar
         handleClick={handleClick}
         bookDetails={bookDetails}
@@ -154,13 +112,17 @@ const MainContainer = () => {
       />
       <Routes>
         <Route
-          path='/faceoff'
+          path="/faceoff"
           element={
-            <FaceOff bookDetails={bookDetails} selectedMovie={selectedMovie} />
+            <FaceOff
+              bookDetails={bookDetails}
+              selectedMovie={selectedMovie}
+              onClick={onClick}
+            />
           }
         />
         <Route
-          path='/'
+          path="/"
           element={
             <RatingsResult
               searchInput={searchInput}
@@ -171,8 +133,6 @@ const MainContainer = () => {
           }
         />
       </Routes>
-
-      {/* <FaceOff /> */}
     </section>
   );
 };

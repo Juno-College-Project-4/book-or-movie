@@ -345,6 +345,7 @@ h3 {
   height: auto;
   border-radius: 10px;
   margin-top: 15px;
+  padding-left: 8px;
 }
 .resultContainer .bookResult .bookBottomInfo .summary .plot {
   text-decoration: underline;
@@ -352,7 +353,7 @@ h3 {
   margin-top: 15px;
 }
 .resultContainer .bookResult .bookBottomInfo .summary p {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-align: left;
   color: black;
 }
@@ -415,6 +416,7 @@ h3 {
   height: auto;
   border-radius: 10px;
   margin-top: 15px;
+  padding-left: 8px;
 }
 .resultContainer .movieResult .movieBottomInfo .summary .plot {
   text-align: left;
@@ -422,7 +424,7 @@ h3 {
   text-decoration: underline;
 }
 .resultContainer .movieResult .movieBottomInfo .summary p {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-align: left;
   color: black;
 }

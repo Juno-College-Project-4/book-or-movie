@@ -1,10 +1,37 @@
-// import { useState } from "react"; -- state not needed
+import { useNavigate } from "react-router-dom";
 
-const SearchBar = ({handleClick, setSearchInput, searchInput}) => {
+const SearchBar = ({ handleClick, setSearchInput, searchInput }) => {
+  const handleInput = (e) => {
+    setSearchInput(e.target.value);
+  };
+  const navigate = useNavigate();
 
-    // const [buttonClick, setButtonClick] = useState(""); --- State is not needed here as all the states were put into the MainContainer Component
-    // const [userInput, setUserInput] = useState("");
+  return (
+    <>
+      {/* input and submit button onClick navigate user back to / path, link creates anchor tag which does not work with button */}
+      <div onClick={() => navigate("/")}>
+        <form action="">
+          <input
+            type="text"
+            value={searchInput}
+            placeholder="Search Movies/Books"
+            onChange={handleInput}
+          />
+          <button
+            type="submit"
+            value="Submit"
+            className="button"
+            onClick={handleClick}
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </>
+  );
+};
 
+<<<<<<< HEAD
     // const handleClick = (e) => {
     //     e.preventDefault();
     //     setButtonClick(userInput); ---- handle click is not needed here
@@ -28,3 +55,6 @@ const SearchBar = ({handleClick, setSearchInput, searchInput}) => {
 }
 
 export default SearchBar;
+=======
+export default SearchBar;
+>>>>>>> c30e3c8101b198e69d0c28742b15be5a3280ba53
