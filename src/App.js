@@ -1,6 +1,6 @@
 import "./styles/styles.css";
 import MainContainer from "./components/MainContainer";
-import { Outlet, Link } from "react-router-dom";
+
 
 function App() {
   return (
