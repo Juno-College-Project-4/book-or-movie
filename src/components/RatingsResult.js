@@ -26,7 +26,7 @@ const RatingsResults = (props) => {
                       >
                         {movieDescription.poster_path &&
                         movieDescription.poster_path ? (
-                          <img className='movieImg' src={movieImage} alt='' />
+                          <img className='movieImg' src={movieImage} alt='movie cover selected by user' />
                         ) : (
                           <h3>{movieDescription.title}</h3>
                         )}
