@@ -6,14 +6,11 @@ function App() {
   return (
     <>
       <header>
-        <h1>Books vs Movies</h1>
+        <a href="/">
+          <h1>Books vs Movies</h1>
+        </a>
         <MainContainer />
       </header>
-      {/* <main>
-        <Routes>
-          <Route path="/faceoff" element={<FaceOff/>} />
-        </Routes>
-      </main> */}
     </>
   );
 }

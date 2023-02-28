@@ -63,7 +63,6 @@ const MainContainer = () => {
         q: bookTitle.title,
       },
     }).then((apiData) => {
-      // console.log(apiData);
       let selectedBook;
 
       for (let i = 0; i < apiData.data.items.length; i++) {
@@ -98,7 +97,6 @@ const MainContainer = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-
     // call the state updater function and use the selected option value to update.
     onEnter();
   };
@@ -119,9 +117,6 @@ const MainContainer = () => {
             <FaceOff
               bookDetails={bookDetails}
               selectedMovie={selectedMovie}
-              searchInput={searchInput}
-              movieDetails={movieDetails}
-              error={error}
               onClick={onClick}
             />
           }
