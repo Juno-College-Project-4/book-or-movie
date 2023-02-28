@@ -1,5 +1,6 @@
-import './styles/styles.css';
-import MainContainer from './components/MainContainer';
+import "./styles/styles.css";
+import MainContainer from "./components/MainContainer";
+import { Route, Routes, Link } from "react-router-dom";
 
 function App() {
   return (
@@ -13,7 +14,6 @@ function App() {
           <Route path="/faceoff" element={<FaceOff/>} />
         </Routes>
       </main> */}
-      
     </>
   );
 }
