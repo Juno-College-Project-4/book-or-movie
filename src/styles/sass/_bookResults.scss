@@ -1,0 +1,27 @@
+.bookImageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;    
+}
+
+.bookList {
+    border: 1px solid #f4e6e8;
+    text-align: center;
+    width: 15rem;
+    height: 22rem;
+    margin: 10px 5px;
+    box-shadow: -4px 4px 6px #8C8C8C;
+}
+
+.bookList:hover {
+    transform: scale(1.04);
+    cursor: pointer;
+}
+
+.bookImg {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    object-position: top;
+}
+
