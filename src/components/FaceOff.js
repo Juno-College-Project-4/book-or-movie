@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import Loading from "./Loading";
 
-const FaceOff = (props) => {
+const FaceOff = (props, {isLoading}) => {
   // added a rendered and set rendered useState to check for the displayBook array after the page loaded
   const [rendered, setRendered] = useState(false);
   const displayMovie = props.selectedMovie;
@@ -27,6 +28,7 @@ const FaceOff = (props) => {
     setRendered(true);
   }, []);
 
+  if (isLoading) return <Loading />;
   return (
     <>
       {/* added the banner */}
@@ -35,7 +37,7 @@ const FaceOff = (props) => {
       {rendered && displayBook.length === 0 ? (
         <div></div>
       ) : (
-        <section className="resultContainer">
+        <section className="resultContainer wrapper">
           <div className="bookResult">
             <div className="bookTopInfo">
               <div className="bookInfoDetails">
@@ -45,38 +47,12 @@ const FaceOff = (props) => {
                 <div className="authorAndRating">
                   <h4 className="author">Author: {displayBook.authors}</h4>
                   <div className="rating">
-                    Rating: {displayBook.averageRating}
+                    Rating: {displayBook.averageRating}/5
                   </div>
                 </div>
               </div>
-<<<<<<< HEAD
-            </div>
-            <div className='bookImgContainer'>
-            {/*// need to use some kind of dot notation for the alt text for the description of the book image */}
-              <img src={displayBook.imageLinks?.thumbnail} alt=""/>
-            </div>
-          </div>
-          <div className='bookBottomInfo'>
-            <div className='summary'>
-              <span className='plot'>Plot Summary</span>
-              <p>{displayBook.description}</p>
-            </div>
-          </div>
-        </div>
-
-        <div className='vsBannerContainer'>
-          <h2 className='vsBanner'>VS</h2>
-        </div>
-
-        <div className='movieResult'>
-          <div className='movieTopInfo'>
-            <div className='movieInfoDetails'>
-              <div className='titleOfMovie'>
-                <h3 className='eachMovieTitle'>{displayMovie.title}</h3>
-=======
               <div className="bookImgContainer">
-                <img src={displayBook.imageLinks?.thumbnail} />
->>>>>>> c30e3c8101b198e69d0c28742b15be5a3280ba53
+                <img src={displayBook.imageLinks?.thumbnail} alt="image of book cover" />
               </div>
             </div>
             <div className="bookBottomInfo">
@@ -99,7 +75,7 @@ const FaceOff = (props) => {
                 </div>
                 <div className="authorAndRating">
                   <div className="rating">
-                    Rating: {displayMovie.vote_average}
+                    Rating: {displayMovie.vote_average}/10
                   </div>
                 </div>
               </div>
@@ -107,17 +83,11 @@ const FaceOff = (props) => {
                 <img className="moviePhoto" src={movieImage} />
               </div>
             </div>
-<<<<<<< HEAD
-            <div className='moviePhotoContainer'>
-              {/*// need to use some kind of dot notation for the alt text for the description of the movie image */}
-              <img className='moviePhoto' src={movieImage}  alt=""/>
-=======
             <div className="movieBottomInfo">
               <div className="summary">
                 <span className="plot">Plot Summary</span>
                 <p>{displayMovie.overview}</p>
               </div>
->>>>>>> c30e3c8101b198e69d0c28742b15be5a3280ba53
             </div>
           </div>
         </section>

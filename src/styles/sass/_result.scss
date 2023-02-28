@@ -3,22 +3,53 @@
   display: flex;
   margin: auto;
   width: 80%;
-  height: 100vh;
+
+  @media (max-width:1185px) {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+  }
+
+
 
   // .bookResult ---------------------------
   .bookResult {
-    margin-top: 3rem;
     width: 40%;
     padding: 20px;
     border-radius: 10px;
-    background-color: black;
-    height: 60vh;
+    border: 1px solid #f4e6e8;
+    text-align: center;
+    height: 35rem;
+    margin: 10px 5px;
+    box-shadow: -8px 8px 6px #8c8c8c;
 
-    
-    
+    @media (max-width:1185px) {
+      width: 70%;
+    }
+
+    @media (max-width:867px) {
+      height: 45rem;
+    }
+
+    @media (max-width:585px) {
+      width: 100%;
+    }
+
+    @media (max-width:320px) {
+      height: 55rem;
+    }
+
+
     .bookTopInfo {
       display: flex;
       justify-content: space-evenly;
+
+      @media (max-width:867px) {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+
+
 
       .bookInfoDetails {
         border-radius: 2px;
@@ -29,9 +60,27 @@
         margin: 100px 15px 0 0;
         box-shadow: -4px 4px 6px #8c8c8c;
 
+        @media (max-width:1487px) {
+          height: 5.5rem;
+          margin: 0 15px 0 0;
+        }
+
+        @media (max-width:1355px) {
+          height: auto;
+        }
+
+        @media (max-width:867px) {
+          border: none;
+          box-shadow: none;
+        }
+
         .titleOfBook {
           .eachBookTitle {
             border-radius: 10px;
+
+            @media (max-width:1487px) {
+              margin: 10px 0;
+            }
           }
         }
       }
@@ -45,7 +94,12 @@
       .authorAndRating {
         display: flex;
         justify-content: space-evenly;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+
+        @media (max-width:1185px) {
+          flex-wrap: wrap;
+        }
+
 
         .rating,
         .author {
@@ -57,10 +111,22 @@
 
         .author {
           background-color: #ace8cd;
+
+          @media (max-width:1253px) {
+            padding: 4px;
+          }
+
+          @media (max-width:1185px) {
+            padding: 8px;
+          }
         }
 
         .rating {
           background-color: #f4e6e8;
+
+          @media (max-width:1487px) {
+            margin-top: 10px;
+          }
         }
       }
     }
@@ -69,48 +135,60 @@
       .summary {
         display: flex;
         flex-direction: column;
-        background-color: white;
-        height: auto;
-        border-radius: 10px;
         margin-top: 15px;
-        padding-left: 8px;
+
+        @media (max-width:867px) {
+          align-items: center;
+        }
 
         .plot {
-          text-decoration: underline;
           text-align: left;
-          margin-top: 15px;
+          text-decoration: underline;
         }
 
         p {
           font-size: 0.8rem;
           text-align: left;
-          color: black;
         }
       }
     }
   }
 
-  .bookResult:hover {
-    border: 3px solid white;
-    text-align: center;
-    height: 35rem;
-    box-shadow: -12px 10px 6px #8c8c8c;
-    cursor: pointer;
-  }
-
   // .movieResult ---------------------------
   .movieResult {
-    margin-top: 3rem;
     width: 40%;
     padding: 20px;
     border-radius: 10px;
-    background-color: black;
-    height: 60vh;
-    
+    border: 1px solid #f4e6e8;
+    text-align: center;
+    height: 35rem;
+    margin: 10px 5px;
+    box-shadow: -8px 8px 6px #8c8c8c;
+
+    @media (max-width:1185px) {
+      width: 70%;
+    }
+
+    @media (max-width:867px) {
+      height: 45rem;
+    }
+
+    @media (max-width:585px) {
+      width: 100%;
+    }
+
+    @media (max-width:320px) {
+      height: 55rem;
+    }
 
     .movieTopInfo {
       display: flex;
       justify-content: space-evenly;
+
+      @media (max-width:867px) {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
 
       .movieInfoDetails {
         border-radius: 2px;
@@ -121,12 +199,30 @@
         margin: 100px auto;
         box-shadow: -4px 4px 6px #8c8c8c;
 
+        @media (max-width:1487px) {
+          height: auto;
+          margin: 0 15px 0 0;
+
+        }
+
+        @media (max-width:867px) {
+          border: none;
+          box-shadow: none;
+        }
+
+
+
         .titleOfMovie {
           .eachMovieTitle {
             border-radius: 10px;
+
+            @media (min-width:1487px) {
+              height: 5.5rem;
+            }
           }
         }
       }
+
       .moviePhotoContainer {
         .moviePhoto {
           width: 13rem;
@@ -136,7 +232,7 @@
       .authorAndRating {
         display: flex;
         justify-content: space-evenly;
-        font-size: 0.9rem;
+        font-size: 0.7rem;
 
         .rating,
         .author {
@@ -147,7 +243,6 @@
         }
 
         .author {
-        
           background-color: #ace8cd;
         }
 
@@ -161,33 +256,23 @@
       .summary {
         display: flex;
         flex-direction: column;
-        background-color: white;
-        height: auto;
-        border-radius: 10px;
         margin-top: 15px;
-        padding-left: 8px;
+
+        @media (max-width:867px) {
+          align-items: center;
+        }
 
         .plot {
           text-align: left;
-          margin-top: 15px;
           text-decoration: underline;
         }
 
         p {
           font-size: 0.8rem;
           text-align: left;
-          color: black;
         }
       }
     }
-  }
-
-  .movieResult:hover {
-    border: 3px solid #f4e6e8;
-    text-align: center;
-    height: 35rem;
-    box-shadow: -12px 10px 6px #8c8c8c;
-    cursor: pointer;
   }
 }
 
@@ -196,10 +281,32 @@
   width: 20%;
   align-items: center;
   margin: auto;
+  color: #5da9c2;
+
   .vsBanner {
-    font-size: 3rem;
     font-family: 'Maitree', serif;
-    text-shadow: -4px 4px 6px black;
-    padding-bottom: 200px;
+    text-shadow: -4px 4px 6px #8c8c8c;
+  }
+}
+
+// winner banner ----
+
+.winnerBanner {
+  background-color: #f4e6e8;
+  padding-top: 10px;
+  border-radius: 2px;
+  border: 1px solid #f4e6e8;
+  text-align: center;
+  width: 18rem;
+  height: 3.5rem;
+  margin: 30px auto;
+  box-shadow: -4px 4px 6px #8c8c8c;
+
+  @media (max-width:656px) {
+    margin-top: 5rem;
+  }
+
+  @media (max-width:656px) {
+    margin-top: 5rem;
   }
 }

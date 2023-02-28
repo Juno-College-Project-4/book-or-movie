@@ -6,19 +6,21 @@ import axios from "axios";
 import RatingsResult from "./RatingsResult";
 import FaceOff from "./FaceOff";
 import { Route, Routes } from "react-router-dom";
+import Loading from "./Loading";
 
 const MainContainer = () => {
   //3. intiliaze state to hold the data - The information on the book will be returned from the api
   const [searchInput, setSearchInput] = useState("");
   const [bookDetails, setBookDetails] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState([]);
-
   const [movieDetails, setMovieDetails] = useState([]);
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   //4. define a side effect which will run once the user searches for a book or movie title
 
   const onEnter = () => {
+    setIsLoading(true);
     axios({
       url: "https://api.themoviedb.org/3/search/movie",
       params: {
@@ -30,7 +32,6 @@ const MainContainer = () => {
     })
       .then((data) => {
         if (data) {
-          // console.log(data);
           return data;
         } else {
           throw new Error(data.data.results === "");
@@ -38,6 +39,8 @@ const MainContainer = () => {
       })
       .then((data) => {
         setMovieDetails(data.data.results);
+        setIsLoading(false);
+        console.log(data.data.results) // --------------------- delete this after
       })
       .catch((error) => {
         // state to represent error
@@ -49,6 +52,7 @@ const MainContainer = () => {
         } else {
           setError(true);
         }
+        setIsLoading(false);
       });
   };
   const onClick = (bookTitle) => {
@@ -101,6 +105,8 @@ const MainContainer = () => {
     onEnter();
   };
 
+
+  if (isLoading) return <Loading />;
   return (
     <section>
       <SearchBar
@@ -118,6 +124,7 @@ const MainContainer = () => {
               bookDetails={bookDetails}
               selectedMovie={selectedMovie}
               onClick={onClick}
+              loading={isLoading}
             />
           }
         />
@@ -129,8 +136,11 @@ const MainContainer = () => {
               movieDetails={movieDetails}
               error={error}
               onClick={onClick}
+              loading={isLoading}
             />
           }
+        
+          
         />
       </Routes>
     </section>

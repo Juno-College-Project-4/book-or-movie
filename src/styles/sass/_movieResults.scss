@@ -1,17 +1,15 @@
 .movieImageContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding-top: 100px;  
-    margin: 10px 5px;
+    justify-content: space-evenly;    
 }
 
 .movieList {
-    margin-top: 5rem;
     border: 1px solid #f4e6e8;
     text-align: center;
     width: 15rem;
     height: 22rem;
+    margin: 10px 5px;
     box-shadow: -4px 4px 6px #8C8C8C;    
 }
 
@@ -30,5 +28,4 @@
 
 .movieTitle {
     text-decoration: none;
-    color: white;
 }

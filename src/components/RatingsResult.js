@@ -1,11 +1,14 @@
 import { Link, Outlet } from 'react-router-dom';
+import Loading from './Loading';
 
-const RatingsResults = (props) => {
+const RatingsResults = (props, {isLoading}) => {
   const movieResult = props.movieDetails;
   const error = props.error;
+
+  if (isLoading) return <Loading />;
   return (
     <>
-      <section className='wrapper'>
+      <section>
         <div className='movieContainer'>
           <div className='movieInfo'>
             <p>
