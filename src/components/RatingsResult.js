@@ -30,10 +30,7 @@ const RatingsResults = (props) => {
                         ) : (
                           <h3>{movieDescription.title}</h3>
                         )}
-                        <h3>{movieDescription.title}</h3>
-                        {/* <Link to='/faceoff'>
-                          <h3 key={i}>{movieDescription.title}</h3>
-                        </Link> */}
+                        <h3>{movieDescription.title}</h3>            
                       </div>
                     </Link>
                   </>

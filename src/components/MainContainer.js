@@ -39,16 +39,12 @@ const MainContainer = () => {
         }        
       })      
       .then((data) => {   
-        // console.log(data)  
-        setMovieDetails(data.data.results)   
-        // console.log(movieDetails)
+        setMovieDetails(data.data.results)  
         
       })
       .catch((error) => {
         // state to represent error
         // if error is true display message
-        // turnary in return section
-        // console.log(error.message)
         if (error.message === 'apiData.data.results is undefined') {
           setError("This book or movie title doesn't exist");
           setSearchInput('');
@@ -69,14 +65,6 @@ const MainContainer = () => {
         q: bookTitle.title,
       },
     }).then((apiData) => {
-      console.log(apiData)
-      // const bookInfo = apiData.data.items.map((book) => {
-      //   if (book.volumeInfo.title.toUpperCase() === bookTitle.title.toUpperCase()) {
-      //     return book.volumeInfo;
-      //   }
-      // });
-      // console.log(bookInfo)
-      // const filteredBookData = bookInfo.filter((filteredBook) => {
       let selectedBook;
       
       for (let i = 0; i < apiData.data.items.length; i++) {
@@ -100,46 +88,12 @@ const MainContainer = () => {
         // what happens if it didn't find any book?
           setError(true);        
       }
-        // filteredBook.title.toUpperCase() === bookTitle.toUpperCase();
-        // console.log(filteredBook);
-      });
-
-      
-    
-      
-     
-      // const vote = filteredMovieData.map(
-      //   (popularMovie) => popularMovie.vote_average
-      // );
-      // const popularOrganized = Math.max(...vote);
-      // console.log(popularOrganized, 'popularOrganized');
-      // const mostPopular = vote.indexOf(popularOrganized);
-      // // console.log(mostPopular, "most popular");
-      // setMovieDetails(filteredMovieData[mostPopular]);
-      // filtered movie data based on user input
-      // setMovieDetails(filteredMovieData);
-      // // NEED TO LOOK AT MOVIE - SEE IF THERE IS A BETTER WAY TO PULL RESULTS (MORE FORGIVING)
-      // console.log(data.data.results);
-      // console.log(movieDetails)
-      // setBookDetails(bookInfo);
-      // setBookDetails(filteredBookData);
-      // console.log(filteredBookData);
-
-    // });   
+    });        
   };
-  // index 0 OR randomizer as each search has different
-  // for google book api we need to get
-  // index1, volumeInfo -> averageRating, volumeInfo ->description, volumeInfo -> imageLinks -> thumbnail, volumneInfo -> authors,
   const handleClick = (e) => {
     e.preventDefault();
-
     // call the state updater function and use the selected option value to update.
     onEnter();
-
-    // const book = e.target.value;
-    // setBookDetails(book);
-
-    // setMovieDetails(displayDetails);
   };
 
   return (
@@ -156,7 +110,11 @@ const MainContainer = () => {
         <Route
           path='/faceoff'
           element={
-            <FaceOff bookDetails={bookDetails} selectedMovie={selectedMovie} />
+            <FaceOff
+              bookDetails={bookDetails}
+              selectedMovie={selectedMovie}
+              onClick={onClick}
+            />
           }
         />
         <Route
@@ -171,8 +129,6 @@ const MainContainer = () => {
           }
         />
       </Routes>
-
-      {/* <FaceOff /> */}
     </section>
   );
 };

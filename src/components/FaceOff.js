@@ -1,12 +1,8 @@
-// import RatingsResults from "./RatingsResult";
-
 const FaceOff = (props) => {
   const displayMovie = props.selectedMovie;
   const displayBook = props.bookDetails;
   console.log(displayMovie);
   const movieImage = `https://image.tmdb.org/t/p/w500${displayMovie.poster_path}`;
-  // const displayMovie = props?
-  // console.log(displayBook)
   return (
     <>
       <section className='resultContainer'>
