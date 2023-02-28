@@ -24,7 +24,8 @@ const FaceOff = (props) => {
               </div>
             </div>
             <div className='bookImgContainer'>
-              <img src={displayBook.imageLinks?.thumbnail} />
+            {/*// need to use some kind of dot notation for the alt text for the description of the book image */}
+              <img src={displayBook.imageLinks?.thumbnail} alt=""/>
             </div>
           </div>
           <div className='bookBottomInfo'>
@@ -52,7 +53,8 @@ const FaceOff = (props) => {
               </div>
             </div>
             <div className='moviePhotoContainer'>
-              <img className='moviePhoto' src={movieImage} />
+              {/*// need to use some kind of dot notation for the alt text for the description of the movie image */}
+              <img className='moviePhoto' src={movieImage}  alt=""/>
             </div>
           </div>
           {/* stretch goal to use id # and filter out name of directors */}

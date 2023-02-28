@@ -18,10 +18,10 @@ const SearchBar = ({handleClick, setSearchInput, searchInput}) => {
     }
     
     return (
-        <div>
+        <div className="searchBox">
             <form action="">
-                <input type="text" value={searchInput} placeholder="Search Movies/Books" onChange={handleInput}/>
-                <button type="submit" value="Submit" className="button" onClick={handleClick}>Submit</button>
+                <input type="text" value={searchInput} placeholder="Search Movies/Books " onChange={handleInput}/>
+                <button type="submit" value="Submit" className="button" onClick={handleClick}><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
     )

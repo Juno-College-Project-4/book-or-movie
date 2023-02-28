@@ -1,20 +1,20 @@
 .resultContainer {
   padding-top: 30px;
   display: flex;
-  // justify-content: space-between;
   margin: auto;
   width: 80%;
+  height: 100vh;
 
   // .bookResult ---------------------------
   .bookResult {
+    margin-top: 3rem;
     width: 40%;
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid #f4e6e8;
-    text-align: center;
-    height: 35rem;
-    margin: 10px 5px;
-    box-shadow: -8px 8px 6px #8c8c8c;
+    background-color: black;
+    height: 60vh;
+
+    
     
     .bookTopInfo {
       display: flex;
@@ -45,7 +45,7 @@
       .authorAndRating {
         display: flex;
         justify-content: space-evenly;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
 
         .rating,
         .author {
@@ -69,29 +69,43 @@
       .summary {
         display: flex;
         flex-direction: column;
+        background-color: white;
+        height: auto;
+        border-radius: 10px;
+        margin-top: 15px;
 
         .plot {
+          text-decoration: underline;
           text-align: left;
+          margin-top: 15px;
         }
 
         p {
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           text-align: left;
+          color: black;
         }
       }
     }
   }
 
+  .bookResult:hover {
+    border: 3px solid white;
+    text-align: center;
+    height: 35rem;
+    box-shadow: -12px 10px 6px #8c8c8c;
+    cursor: pointer;
+  }
+
   // .movieResult ---------------------------
   .movieResult {
+    margin-top: 3rem;
     width: 40%;
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid #f4e6e8;
-    text-align: center;
-    height: 35rem;
-    margin: 10px 5px;
-    box-shadow: -8px 8px 6px #8c8c8c;
+    background-color: black;
+    height: 60vh;
+    
 
     .movieTopInfo {
       display: flex;
@@ -121,7 +135,7 @@
       .authorAndRating {
         display: flex;
         justify-content: space-evenly;
-        font-size: 0.7rem;
+        font-size: 0.9rem;
 
         .rating,
         .author {
@@ -132,6 +146,7 @@
         }
 
         .author {
+        
           background-color: #ace8cd;
         }
 
@@ -145,17 +160,32 @@
       .summary {
         display: flex;
         flex-direction: column;
+        background-color: white;
+        height: auto;
+        border-radius: 10px;
+        margin-top: 15px;
 
         .plot {
           text-align: left;
+          margin-top: 15px;
+          text-decoration: underline;
         }
 
         p {
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           text-align: left;
+          color: black;
         }
       }
     }
+  }
+
+  .movieResult:hover {
+    border: 3px solid #f4e6e8;
+    text-align: center;
+    height: 35rem;
+    box-shadow: -12px 10px 6px #8c8c8c;
+    cursor: pointer;
   }
 }
 
@@ -164,9 +194,10 @@
   width: 20%;
   align-items: center;
   margin: auto;
-  color: #5da9c2;
   .vsBanner {
+    font-size: 3rem;
     font-family: 'Maitree', serif;
-    text-shadow: -4px 4px 6px #8c8c8c;
+    text-shadow: -4px 4px 6px black;
+    padding-bottom: 200px;
   }
 }

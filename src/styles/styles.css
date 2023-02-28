@@ -234,11 +234,20 @@ html {
 body {
   text-align: center;
   font-family: "Maitree";
+  background-image: url("../Assets/bookOrMovie.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 header {
-  background-color: #5da9c2;
-  height: 14rem;
+  background-color: rgba(48, 44, 44, 0.8);
+  height: 10%;
+}
+
+main {
+  background-color: rgba(48, 44, 44, 0.8);
+  padding-top: 20px;
+  height: 90%;
 }
 
 h1,
@@ -248,6 +257,7 @@ p,
 button,
 input {
   font-family: "Maitree", serif;
+  color: white;
 }
 
 h1,
@@ -258,7 +268,6 @@ h3 {
 
 h1 {
   margin: 0px;
-  padding-top: 60px;
   color: #fff;
   font-size: 4rem;
   text-transform: uppercase;
@@ -282,16 +291,15 @@ h3 {
   display: flex;
   margin: auto;
   width: 80%;
+  height: 100vh;
 }
 .resultContainer .bookResult {
+  margin-top: 3rem;
   width: 40%;
   padding: 20px;
   border-radius: 10px;
-  border: 1px solid #f4e6e8;
-  text-align: center;
-  height: 35rem;
-  margin: 10px 5px;
-  box-shadow: -8px 8px 6px #8c8c8c;
+  background-color: black;
+  height: 60vh;
 }
 .resultContainer .bookResult .bookTopInfo {
   display: flex;
@@ -315,7 +323,7 @@ h3 {
 .resultContainer .bookResult .bookTopInfo .authorAndRating {
   display: flex;
   justify-content: space-evenly;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 .resultContainer .bookResult .bookTopInfo .authorAndRating .rating,
 .resultContainer .bookResult .bookTopInfo .authorAndRating .author {
@@ -333,23 +341,35 @@ h3 {
 .resultContainer .bookResult .bookBottomInfo .summary {
   display: flex;
   flex-direction: column;
+  background-color: white;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 15px;
 }
 .resultContainer .bookResult .bookBottomInfo .summary .plot {
+  text-decoration: underline;
   text-align: left;
+  margin-top: 15px;
 }
 .resultContainer .bookResult .bookBottomInfo .summary p {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-align: left;
+  color: black;
+}
+.resultContainer .bookResult:hover {
+  border: 3px solid white;
+  text-align: center;
+  height: 35rem;
+  box-shadow: -12px 10px 6px #8c8c8c;
+  cursor: pointer;
 }
 .resultContainer .movieResult {
+  margin-top: 3rem;
   width: 40%;
   padding: 20px;
   border-radius: 10px;
-  border: 1px solid #f4e6e8;
-  text-align: center;
-  height: 35rem;
-  margin: 10px 5px;
-  box-shadow: -8px 8px 6px #8c8c8c;
+  background-color: black;
+  height: 60vh;
 }
 .resultContainer .movieResult .movieTopInfo {
   display: flex;
@@ -373,7 +393,7 @@ h3 {
 .resultContainer .movieResult .movieTopInfo .authorAndRating {
   display: flex;
   justify-content: space-evenly;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
 }
 .resultContainer .movieResult .movieTopInfo .authorAndRating .rating,
 .resultContainer .movieResult .movieTopInfo .authorAndRating .author {
@@ -391,54 +411,125 @@ h3 {
 .resultContainer .movieResult .movieBottomInfo .summary {
   display: flex;
   flex-direction: column;
+  background-color: white;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 15px;
 }
 .resultContainer .movieResult .movieBottomInfo .summary .plot {
   text-align: left;
+  margin-top: 15px;
+  text-decoration: underline;
 }
 .resultContainer .movieResult .movieBottomInfo .summary p {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-align: left;
+  color: black;
+}
+.resultContainer .movieResult:hover {
+  border: 3px solid #f4e6e8;
+  text-align: center;
+  height: 35rem;
+  box-shadow: -12px 10px 6px #8c8c8c;
+  cursor: pointer;
 }
 
 .vsBannerContainer {
   width: 20%;
   align-items: center;
   margin: auto;
-  color: #5da9c2;
 }
 .vsBannerContainer .vsBanner {
+  font-size: 3rem;
   font-family: "Maitree", serif;
-  text-shadow: -4px 4px 6px #8c8c8c;
+  text-shadow: -4px 4px 6px black;
+  padding-bottom: 200px;
 }
 
-input {
-  border-radius: 33px;
-  height: 2rem;
-  width: 20rem;
-  padding-left: 20px;
-  font-size: 1.2rem;
+.searchBox {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.searchBox input {
+  background-color: white;
+  border: none;
+  outline: none;
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  border-radius: 40px;
+  line-height: 30px;
+  font-size: 18px;
+  color: #fff;
+  transition: all 1s;
+  letter-spacing: 1px;
+}
+
+.searchBox input::-moz-placeholder {
+  color: black;
+  font-weight: 400;
+}
+
+.searchBox input::placeholder {
+  color: black;
+  font-weight: 400;
+}
+
+.searchBox i {
+  background-color: white;
+  color: black;
+  width: 40px;
+  height: 40px;
+  padding-right: 10px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.5s;
+  margin-left: 10px;
+}
+
+.searchBox:hover input {
+  width: 240px;
+  opacity: 1;
+  padding: 10px 20px;
+  color: black;
+}
+
+.searchBox:hover i {
+  color: black;
 }
 
 button {
-  background-color: #fff;
-  border-radius: 33px;
-  margin: 30px 8px;
-  padding: 3.5px 8px;
-  font-size: 1.1rem;
+  background-color: white;
+  padding: 5px 1px;
+  margin-top: 50px;
+  border-radius: 50%;
+  border: none;
+  margin-left: 1rem;
 }
 
 .movieImageContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  padding-top: 100px;
+  margin: 10px 5px;
 }
 
 .movieList {
+  margin-top: 5rem;
   border: 1px solid #f4e6e8;
   text-align: center;
   width: 15rem;
   height: 22rem;
-  margin: 10px 5px;
   box-shadow: -4px 4px 6px #8C8C8C;
 }
 
@@ -458,4 +549,5 @@ button {
 
 .movieTitle {
   text-decoration: none;
+  color: white;
 }/*# sourceMappingURL=styles.css.map */

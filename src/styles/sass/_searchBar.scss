@@ -1,16 +1,78 @@
-input {
-    border-radius: 33px;
-    height: 2rem;
-    width: 20rem;
-    padding-left: 20px;
-    font-size: 1.2rem; 
+.searchBox {
+    position: absolute;
+    // top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.searchBox input{
+    background-color: white;
+    border: none;
+    outline: none;
+    width: 0;
+    padding: 0; 
+    opacity: 0;
+    border-radius: 40px;
+    line-height: 30px;
+    font-size: 18px;
+    color: #fff;
+    transition: all 1s;
+    letter-spacing: 1px;
+}
+
+.searchBox input::placeholder {
+    color: black;
+    font-weight: 400;
+}
+
+.searchBox i {
+    background-color: white;
+    color: black;
+    width: 40px;
+    height: 40px;
+    padding-right: 10px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all .5s;
+    margin-left: 10px;
+}
+
+.searchBox:hover input{
+    width: 240px;
+    opacity: 1;
+    padding: 10px 20px;
+    color: black;
+}
+
+.searchBox:hover i{
+    color: black;
 }
 
 
+// input {
+//     border-radius: 33px;
+//     height: 3rem;
+//     width: 20rem;
+//     padding-left: 20px;
+//     font-size: 1.5rem;
+    
+    
+    
+// }
+
+
 button {
-    background-color: #fff;
-    border-radius: 33px;
-    margin: 30px 8px;
-    padding: 3.5px 8px;
-    font-size: 1.1rem;
+    background-color: white;
+    padding: 5px 1px;
+    margin-top: 50px;
+    border-radius: 50%;
+    border: none;
+    margin-left: 1rem;
 }
